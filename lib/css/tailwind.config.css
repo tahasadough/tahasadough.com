@@ -1,0 +1,9 @@
+@theme {
+  --color-almost-black: #0e0e0e;
+  --color-lighter-black: #1e1e1e;
+  --color-light-black: #333333;
+  --color-gray: #999999;
+  --color-white: #ffffff;
+}
+
+/* tailwind ui components in ui.component.css file  */

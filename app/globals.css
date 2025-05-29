@@ -1,0 +1,12 @@
+@import 'tailwindcss';
+@import '../lib/css/tailwind.config';
+@import '../lib/css/ui.component';
+
+html {
+  scroll-behavior: smooth !important;
+  scrollbar-width: thin;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
