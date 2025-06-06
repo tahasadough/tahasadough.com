@@ -9,7 +9,7 @@ export default function GitHubLink() {
       className='flex items-center gap-2'
     >
       <Image
-        src='/taha-sadough.webp'
+        src='/favicon.ico'
         width={25}
         height={25}
         alt='profile-image'
