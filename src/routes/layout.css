@@ -1,0 +1,16 @@
+@import 'tailwindcss';
+
+@theme {
+	--color-almost-black: #0e0e0e;
+	--color-lighter-black: #1e1e1e;
+	--color-light-black: #333333;
+	--color-gray: #999999;
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+	@apply mx-auto px-[1.3rem] sm:px-8 lg:px-16 xl:px-14 2xl:px-40;
+}
