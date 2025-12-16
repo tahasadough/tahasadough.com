@@ -33,9 +33,7 @@
 			transition:slide={{ duration: 400, axis: 'y', easing: quintOut }}
 			class="fixed top-0 right-0 z-40 w-full border-b border-light-black bg-almost-black"
 		>
-			<nav aria-label="mobile menu navigation">
-				<div in:fly={{ duration: 400, opacity: 0 }} class="border-t-2 border-light-black"></div>
-
+			<nav aria-label="Mobile menu navigation">
 				<ul class="space-y-5 px-5 pt-16 pb-10 text-lg">
 					{#each navLinks as link, i (i)}
 						<li>

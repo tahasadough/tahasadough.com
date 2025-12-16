@@ -7,7 +7,10 @@
 	let { children } = $props();
 </script>
 
-<svelte:head><link rel="icon" href={favicon} /></svelte:head>
+<svelte:head>
+	<link rel="icon" href={favicon} />
+	<meta name="google" content="notranslate" />
+</svelte:head>
 
 <LenisProvider>
 	<MousetrailProvider>

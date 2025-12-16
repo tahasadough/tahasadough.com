@@ -1,5 +1,5 @@
 <script>
-	import { favicon } from '$lib';
+	import { tahaSadoughLg } from '$lib';
 	import { Badge } from '$lib';
 	import { Card } from '$lib';
 </script>
@@ -9,7 +9,11 @@
 	class="container flex flex-col items-center justify-center pt-30 md:flex-col-reverse lg:flex-row"
 >
 	<Card class="p-5 sm:size-[70%] lg:size-full">
-		<img src={favicon} alt="taha-sadough" class="size-full rounded-md object-cover" />
+		<enhanced:img
+			src={tahaSadoughLg}
+			alt="Taha Sadough"
+			class="size-full rounded-md object-cover"
+		/>
 	</Card>
 	<div class="space-y-8 py-10 md:px-10">
 		<div class="flex justify-center">

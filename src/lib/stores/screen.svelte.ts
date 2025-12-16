@@ -9,13 +9,13 @@ class Screen {
 	constructor() {
 		if (!browser) return;
 
-		const update = () => {
-			this.width = window.innerWidth;
-			this.height = window.innerHeight;
-		};
+		window.addEventListener('resize', this.#update);
+		this.#update();
+	}
 
-		window.addEventListener('resize', update);
-		update();
+	#update() {
+		this.width = window.innerWidth;
+		this.height = window.innerHeight;
 	}
 }
 

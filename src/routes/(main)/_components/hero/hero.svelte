@@ -15,11 +15,9 @@
 			<span class="text-gray"> Architecting Scalable, High-Performance Systems & APIs </span>
 		</h1>
 
-		<div class="flex justify-center">
-			<a href="https://github.com/tahasadough" target="_blank" class="py-2">
-				<Button variant="outline">Connect me</Button>
-			</a>
-		</div>
+		<Button variant="outline" href="https://github.com/tahasadough" target="_blank"
+			>Connect me</Button
+		>
 	</div>
 
 	<HeroMetalicFlower />

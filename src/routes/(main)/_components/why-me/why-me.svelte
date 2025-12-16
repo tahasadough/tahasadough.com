@@ -43,7 +43,7 @@
 	</Card>
 {/snippet}
 
-<section id="why-me" class="container flex flex-col items-center justify-center gap-10 py-24">
+<section id="why-me" class="container flex flex-col items-center justify-center gap-10 pt-24 pb-20">
 	<Badge>Why me?</Badge>
 
 	<h2 class="px-2 text-center text-[32px] leading-none lg:px-0 lg:text-5xl">

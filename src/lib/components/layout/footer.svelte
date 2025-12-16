@@ -38,7 +38,6 @@
 				<a
 					href={link.href}
 					target={link.target}
-					aria-label={link.name}
 					class="transition-all duration-500 hover:text-gray"
 				>
 					{link.name}

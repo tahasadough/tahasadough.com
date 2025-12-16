@@ -9,7 +9,7 @@
 >
 	<ProfileLink class="z-50 " href="home" />
 
-	<nav class="hidden md:block">
+	<nav aria-label="Desktop navigation" class="hidden md:block">
 		<ul class="flex gap-8">
 			{#each navLinks as link, i (i)}
 				<li>

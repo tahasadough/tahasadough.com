@@ -2,6 +2,7 @@
 	import { cn } from '$lib';
 	import { cva, type VariantProps } from 'class-variance-authority';
 	import type { Snippet } from 'svelte';
+	import type { HTMLAttributeAnchorTarget, HTMLAttributes } from 'svelte/elements';
 
 	const variants = cva(
 		'cursor-pointer rounded-3xl font-bold transition-all duration-500 hover:bg-white hover:text-almost-black',
@@ -24,16 +25,24 @@
 		}
 	);
 
-	interface Props extends VariantProps<typeof variants> {
-		class?: string;
+	interface Props extends VariantProps<typeof variants>, HTMLAttributes<HTMLButtonElement> {
+		href?: string;
+		target?: HTMLAttributeAnchorTarget;
 		children: Snippet;
 	}
 
-	let { variant, size, class: className, children }: Props = $props();
+	let { variant, size, class: className, href, target, children, ...rest }: Props = $props();
 
 	const buttonClass = $derived(cn(variants({ variant, size }), className));
 </script>
 
-<button class={buttonClass}>
+<svelte:element
+	this={href ? 'a' : 'button'}
+	role={href ? undefined : 'button'}
+	{href}
+	class={buttonClass}
+	{target}
+	{...rest}
+>
 	{@render children()}
-</button>
+</svelte:element>

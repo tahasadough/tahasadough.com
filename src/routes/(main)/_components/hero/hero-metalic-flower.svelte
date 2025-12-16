@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { metalicFlower } from '$lib';
 	import { Spring } from 'svelte/motion';
 
 	let wrapper: HTMLElement;
@@ -36,9 +37,10 @@
 				? 'translate-y-0 scale-100 rotate-0 opacity-100'
 				: 'translate-y-7.5 -rotate-30 opacity-20'}"
 		>
-			<img
-				src="images/metalic-flower.webp"
+			<enhanced:img
+				src={metalicFlower}
 				alt="Grey-metallic-flower-shaped-object"
+				fetchpriority="high"
 				class="size-90 object-cover md:size-125"
 			/>
 			<div
