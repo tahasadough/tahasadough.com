@@ -1,6 +1,6 @@
 <script>
-	import Footer from '$lib/components/layout/footer.svelte';
-	import Navbar from '$lib/components/layout/nav/navbar.svelte';
+	import { Footer } from '$lib';
+	import { Navbar } from '$lib';
 
 	let { children } = $props();
 </script>

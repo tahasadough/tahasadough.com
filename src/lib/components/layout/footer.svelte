@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Link } from '$lib/types/types.common';
-	import GithubLink from '../ui/github-link.svelte';
+	import ProfileLink from '../ui/profile-link.svelte';
 
 	type FooterLink = Link & {
 		target?: '_blank';
@@ -24,7 +24,7 @@
 <footer class="container pt-16 pb-12">
 	<div class="flex flex-col space-y-6 md:flex-row md:justify-between md:space-y-0">
 		<div class="space-y-3">
-			<GithubLink />
+			<ProfileLink href="github" />
 			<p class="w-[60%] text-sm md:w-[40%]">
 				Software Engineer | Architecting Scalable, High-Performance Systems & APIs
 			</p>

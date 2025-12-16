@@ -1,7 +1,7 @@
 <script>
-	import favicon from '$lib/assets/favicon.ico';
-	import Badge from '$lib/components/ui/badge.svelte';
-	import Card from '$lib/components/ui/card.svelte';
+	import { favicon } from '$lib';
+	import { Badge } from '$lib';
+	import { Card } from '$lib';
 </script>
 
 <section
@@ -12,13 +12,13 @@
 		<img src={favicon} alt="taha-sadough" class="size-full rounded-md object-cover" />
 	</Card>
 	<div class="space-y-8 py-10 md:px-10">
-		<div class="flex justify-start md:justify-center">
+		<div class="flex justify-center">
 			<Badge>About</Badge>
 		</div>
-		<h2 class="text-2xl text-gray md:text-center md:text-4xl lg:text-5xl">
+		<h2 class="text-center text-2xl text-gray md:text-4xl lg:text-5xl">
 			I&apos;m a <span class="text-white">Software Engineer</span>
 		</h2>
-		<p class="text-[16px] text-gray md:text-center">
+		<p class="text-center text-[16px] text-gray">
 			As a Software Engineer, I specialize in architecting scalable, high-performance systems.I
 			believe in the &apos;right tool for the job &apos; philosophy. I design robust architectures
 			tailored to the specific needs of the product—ranging from efficient, maintainable Modular

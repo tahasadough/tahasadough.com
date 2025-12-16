@@ -1,5 +1,5 @@
 <script>
-	import favicon from '$lib/assets/favicon.ico';
+	import { favicon } from '$lib';
 	import About from './_components/about/about.svelte';
 	import Contact from './_components/contact/contact.svelte';
 	import Hero from './_components/hero/hero.svelte';

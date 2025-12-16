@@ -1,6 +1,6 @@
 <script>
-	import Badge from '$lib/components/ui/badge.svelte';
-	import Button from '$lib/components/ui/button.svelte';
+	import { Badge } from '$lib';
+	import { Button } from '$lib';
 </script>
 
 <section id="contact" class="relative flex flex-col items-center justify-center gap-7 py-32">

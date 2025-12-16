@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Card from '$lib/components/ui/card.svelte';
-	import Badge from '$lib/components/ui/badge.svelte';
+	import { Card } from '$lib';
+	import { Badge } from '$lib';
 	import { Clock, LucideType, MessageSquare, Search } from 'lucide-svelte';
 
 	interface Card {
@@ -43,7 +43,7 @@
 	</Card>
 {/snippet}
 
-<section id="why-me" class="container flex flex-col items-center justify-center gap-10 py-16">
+<section id="why-me" class="container flex flex-col items-center justify-center gap-10 py-24">
 	<Badge>Why me?</Badge>
 
 	<h2 class="px-2 text-center text-[32px] leading-none lg:px-0 lg:text-5xl">

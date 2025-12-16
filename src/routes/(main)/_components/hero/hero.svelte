@@ -1,14 +1,15 @@
 <script>
 	import HeroMetalicFlower from './hero-metalic-flower.svelte';
-	import Badge from '$lib/components/ui/badge.svelte';
-	import Button from '$lib/components/ui/button.svelte';
+	import { Badge } from '$lib';
+	import { Button } from '$lib';
 </script>
 
 <section
+	id="#hero"
 	class="container flex flex-col items-center justify-center space-y-11.25 px-2 pt-36 pb-10 md:space-y-16 md:px-8 md:pt-30 md:pb-0 lg:space-y-25 lg:px-10 lg:pt-35"
 >
 	<div class="flex flex-col items-center justify-center gap-9">
-		<Badge>Hello,I&apos;m Taha 👋</Badge>
+		<Badge>Hello, I&apos;m Taha 👋</Badge>
 
 		<h1 class="text-center text-[2rem] leading-none sm:text-[3rem] md:text-[4rem]">
 			Software Engineer

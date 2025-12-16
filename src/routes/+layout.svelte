@@ -1,8 +1,8 @@
 <script lang="ts">
 	import './layout.css';
-	import favicon from '$lib/assets/favicon.ico';
-	import LenisProvider from '$lib/components/providers/lenis-provider.svelte';
-	import MousetrailProvider from '$lib/components/providers/mousetrail-provider.svelte';
+	import { favicon } from '$lib';
+	import { LenisProvider } from '$lib';
+	import { MousetrailProvider } from '$lib';
 
 	let { children } = $props();
 </script>
