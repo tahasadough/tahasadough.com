@@ -1,11 +1,16 @@
-<script>
+<script lang="ts">
 	import { Spring } from 'svelte/motion';
 	import { screen } from '$lib/stores/screen.svelte';
+	import type { Snippet } from 'svelte';
 
 	const coords = new Spring({ x: 50, y: 50 }, { stiffness: 0.1, damping: 2 });
 	const size = new Spring(7, { stiffness: 0.1, damping: 2 });
 
-	let { children } = $props();
+	interface Props {
+		children: Snippet;
+	}
+
+	let { children }: Props = $props();
 
 	$effect(() => {
 		if (!screen.isDesktop) return;

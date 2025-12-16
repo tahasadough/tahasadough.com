@@ -2,9 +2,9 @@
 	import type { Link } from '$lib/types/types.common';
 	import ProfileLink from '../ui/profile-link.svelte';
 
-	type FooterLink = Link & {
+	interface FooterLink extends Link {
 		target?: '_blank';
-	};
+	}
 
 	const footerLinks: FooterLink[] = [
 		{

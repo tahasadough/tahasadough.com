@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils/cn';
+	import { cn } from '$lib';
 	import { cva, type VariantProps } from 'class-variance-authority';
 	import type { Snippet } from 'svelte';
 
@@ -29,10 +29,10 @@
 		}
 	});
 
-	type Props = VariantProps<typeof variants> & {
+	interface Props extends VariantProps<typeof variants> {
 		class?: string;
 		children: Snippet;
-	};
+	}
 
 	let { color, size, rounded, class: className, children }: Props = $props();
 

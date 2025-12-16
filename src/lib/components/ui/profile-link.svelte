@@ -1,10 +1,12 @@
 <script lang="ts">
-	import favicon from '$lib/assets/favicon.ico';
+	import { favicon } from '$lib';
 
-	let { class: className, href = 'home' } = $props<{
+	interface Props {
 		class?: string;
 		href?: 'github' | 'home';
-	}>();
+	}
+
+	let { class: className, href = 'home' }: Props = $props();
 </script>
 
 <a
