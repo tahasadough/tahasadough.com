@@ -1,12 +1,10 @@
 <script lang="ts">
-	import { Card } from '$lib';
-	import { Badge } from '$lib';
-	import { Clock, LucideType, MessageSquare, Search } from 'lucide-svelte';
+	import { Card, Badge, Clock, MessageSquare, Search } from '$lib';
 
 	interface Card {
 		title: string;
 		description: string;
-		icon: typeof LucideType;
+		icon: typeof Clock;
 	}
 
 	const cards: Card[] = [
@@ -31,22 +29,24 @@
 	];
 </script>
 
-{#snippet whyMeCard(title: string, text: string, Icon: typeof LucideType)}
-	<Card class="space-y-6">
+{#snippet whyMeCard(title: string, text: string, Icon: typeof Clock)}
+	<Card class="group space-y-6">
 		<div
-			class="flex size-12 items-center justify-center rounded-lg border border-light-black bg-lighter-black"
+			class="flex size-12 items-center justify-center rounded-lg border border-light-black bg-lighter-black transition-all duration-500 group-hover:border-gray/50 group-hover:bg-light-black"
 		>
-			<Icon />
+			<div class="transition-all duration-500 group-hover:scale-110 group-hover:text-gray">
+				<Icon />
+			</div>
 		</div>
-		<h3 class="text-xl">{title}</h3>
-		<p class="text-[16px] text-gray">{text}</p>
+		<h3 class="text-xl transition-all duration-500 group-hover:text-gray">{title}</h3>
+		<p class="text-base text-gray">{text}</p>
 	</Card>
 {/snippet}
 
 <section id="why-me" class="container flex flex-col items-center justify-center gap-10 pt-24 pb-20">
 	<Badge>Why me?</Badge>
 
-	<h2 class="px-2 text-center text-[32px] leading-none lg:px-0 lg:text-5xl">
+	<h2 class="px-2 text-center text-3xl leading-none lg:px-0 lg:text-5xl">
 		I create epic apps that <span class="text-gray">spark</span>
 		your imagination!
 	</h2>

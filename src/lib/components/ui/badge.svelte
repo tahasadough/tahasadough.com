@@ -5,7 +5,7 @@
 	import type { HTMLAttributes } from 'svelte/elements';
 
 	const variants = cva(
-		'cursor-pointer bg-lighter-black z-40 text-sm transition-all duration-300 hover:scale-105',
+		'cursor-pointer z-40 text-sm transition-all duration-500 ease-spring hover:scale-110 bg-linear-to-r from-lighter-black to-light-black shadow-sm hover:shadow-badge',
 		{
 			variants: {
 				size: {

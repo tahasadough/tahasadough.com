@@ -5,7 +5,7 @@
 	import type { HTMLAttributeAnchorTarget, HTMLAttributes } from 'svelte/elements';
 
 	const variants = cva(
-		'cursor-pointer rounded-3xl font-bold transition-all duration-500 hover:bg-white hover:text-almost-black',
+		'cursor-pointer rounded-3xl font-bold transition-all duration-500 hover:scale-105 hover:shadow-lg hover:bg-white hover:text-almost-black light:hover:bg-black light:hover:text-white light:hover:shadow-black/20',
 		{
 			variants: {
 				variant: {
@@ -13,7 +13,7 @@
 					outline: 'border-gray border'
 				},
 				size: {
-					default: 'px-8 py-[0.63rem]',
+					default: 'px-8 py-2.5',
 					sm: 'px-3 py-1',
 					lg: 'px-6 py-3 text-lg'
 				}
@@ -42,6 +42,7 @@
 	{href}
 	class={buttonClass}
 	{target}
+	rel={target === '_blank' ? 'noopener noreferrer' : undefined}
 	{...rest}
 >
 	{@render children()}

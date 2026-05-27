@@ -1,16 +1,124 @@
 @import 'tailwindcss';
 
+:root {
+	--scrollbar-thumb: #333;
+	--scrollbar-track: #0e0e0e;
+}
+
 @theme {
 	--color-almost-black: #0e0e0e;
 	--color-lighter-black: #1e1e1e;
 	--color-light-black: #333333;
 	--color-gray: #999999;
+	--color-surface: #000;
+	--color-on-surface: #fff;
+	--font-sans: Arial, Helvetica, sans-serif;
+	--ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+	--ease-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+	--shadow-card: 0 12px 40px -8px rgb(0 0 0 / 0.2);
+	--shadow-card-light: 0 12px 40px -8px rgb(0 0 0 / 0.08);
+	--shadow-badge: 0 0 20px -5px rgb(255 255 255 / 0.07);
+	--shadow-navbar:
+		0 10px 15px -3px rgba(255, 255, 255, 0.05), 0 4px 6px -4px rgba(255, 255, 255, 0.05);
+	--background-size-200: 200% auto;
+	--duration-1500: 1500ms;
 }
 
-body {
-	font-family: Arial, Helvetica, sans-serif;
+@utility transition-navbar {
+	transition:
+		border-color 300ms,
+		box-shadow 500ms,
+		backdrop-filter 500ms;
+}
+
+@layer base {
+	*:focus-visible {
+		@apply outline-2 outline-offset-2;
+		outline-color: var(--color-on-surface);
+	}
+}
+
+.light {
+	--scrollbar-thumb: #ddd2c4;
+	--scrollbar-track: #f2ebe3;
+	--shadow-navbar: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+html {
+	scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+html::-webkit-scrollbar {
+	width: 6px;
+}
+
+html::-webkit-scrollbar-track {
+	background: var(--scrollbar-track);
+}
+
+html::-webkit-scrollbar-thumb {
+	background: var(--scrollbar-thumb);
+	border-radius: 3px;
+}
+
+@custom-variant light (&:where(.light, .light *));
+
+@keyframes gradient {
+	0%,
+	100% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+}
+
+@keyframes blob {
+	0%,
+	100% {
+		transform: translate(0, 0) scale(1);
+	}
+	25% {
+		transform: translate(30px, -30px) scale(1.1);
+	}
+	50% {
+		transform: translate(-20px, 20px) scale(0.95);
+	}
+	75% {
+		transform: translate(20px, 30px) scale(1.05);
+	}
+}
+
+@keyframes float {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-15px);
+	}
 }
 
 .container {
-	@apply mx-auto px-[1.3rem] sm:px-8 lg:px-16 xl:px-14 2xl:px-40;
+	@apply mx-auto w-full px-4 sm:px-8 lg:px-16 xl:px-14 2xl:px-40;
+}
+
+.light {
+	--color-almost-black: #f2ebe3;
+	--color-lighter-black: #ffffff;
+	--color-light-black: #ddd2c4;
+	--color-gray: #59493a;
+	--color-surface: #faf5ef;
+	--color-on-surface: #1f1a16;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
 }

@@ -10,11 +10,15 @@
 </script>
 
 <a
-	href={href == 'github' ? 'https://github.com/tahasadough' : '/'}
-	target={href == 'github' ? '_blank' : ''}
-	class="z-60 flex items-center gap-2 {className}"
+	href={href === 'github' ? 'https://github.com/tahasadough' : '#home'}
+	target={href === 'github' ? '_blank' : ''}
+	class="group z-60 flex items-center gap-2 {className}"
 	{...rest}
 >
-	<enhanced:img src={tahaSadoughSm} alt="profile" class="size-6.5 rounded-full object-cover" />
-	<h2 class="font-bold">Taha Sadough</h2>
+	<enhanced:img
+		src={tahaSadoughSm}
+		alt="Taha Sadough"
+		class="size-6.5 rounded-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:ring-2 group-hover:ring-gray/50"
+	/>
+	<span class="font-bold transition-all duration-500 group-hover:text-gray">Taha Sadough</span>
 </a>

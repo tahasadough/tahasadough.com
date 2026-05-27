@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { slide, fly, fade } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
-	import { navLinks } from './nav.contants';
+	import { navLinks } from './nav.constants';
 
 	let isToggled = $state(false);
 
@@ -12,7 +12,7 @@
 
 {#snippet burgerLine(baseClass: string, activeClass: string)}
 	<span
-		class="h-0.5 w-full rounded-full bg-white duration-300 ease-in-out {baseClass} {isToggled
+		class="h-0.5 w-full rounded-full bg-on-surface duration-300 ease-in-out {baseClass} {isToggled
 			? activeClass
 			: ''}"
 	></span>
@@ -21,17 +21,20 @@
 <div class="md:hidden">
 	<button
 		onclick={toggleMenu}
+		aria-expanded={isToggled}
+		aria-controls="mobile-menu"
 		class="relative z-50 flex h-5 w-6 flex-col items-center justify-center gap-2 focus:outline-none"
 		aria-label="Toggle Menu"
 	>
-		{@render burgerLine('transition-transform origin-center', 'rotate-45 translate-y-[5px]')}
-		{@render burgerLine('transition-transform origin-center', '-rotate-45 -translate-y-[5px]')}
+		{@render burgerLine('transition-transform origin-center', 'rotate-45 translate-y-5px')}
+		{@render burgerLine('transition-transform origin-center', '-rotate-45 -translate-y-5px')}
 	</button>
 
 	{#if isToggled}
 		<div
+			id="mobile-menu"
 			transition:slide={{ duration: 400, axis: 'y', easing: quintOut }}
-			class="fixed top-0 right-0 z-40 w-full border-b border-light-black bg-almost-black"
+			class="fixed top-0 right-0 z-40 w-full border-b border-light-black bg-almost-black/95 backdrop-blur-lg"
 		>
 			<nav aria-label="Mobile menu navigation">
 				<ul class="space-y-5 px-5 pt-16 pb-10 text-lg">

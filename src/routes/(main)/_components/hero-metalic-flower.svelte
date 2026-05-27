@@ -27,32 +27,36 @@
 
 <svelte:window bind:scrollY />
 
-<section class="relative -z-50 shadow-2xl select-none">
+<section class="relative -z-50 select-none">
 	<div
 		bind:this={wrapper}
 		style:transform="translateY({motion.current.y}px) rotate({motion.current.r}deg)"
 	>
 		<div
-			class="transition-all duration-1500 ease-[cubic-bezier(0.25,1,0.5,1)] {isReady
+			class="transition-all duration-1500 ease-smooth {isReady
 				? 'translate-y-0 scale-100 rotate-0 opacity-100'
 				: 'translate-y-7.5 -rotate-30 opacity-20'}"
 		>
 			<enhanced:img
 				src={metalicFlower}
-				alt="Grey-metallic-flower-shaped-object"
+				alt=""
+				aria-hidden="true"
 				fetchpriority="high"
 				class="size-90 object-cover md:size-125"
 			/>
 			<div
-				class="absolute top-0 -z-50 w-full rounded-full bg-white py-64 opacity-10 blur-3xl"
+				class="absolute top-0 -z-50 w-full rounded-full bg-on-surface py-64 opacity-10 blur-3xl"
+			></div>
+			<div
+				class="absolute right-0 bottom-0 left-0 h-1/4 bg-linear-to-t from-surface to-transparent"
 			></div>
 		</div>
 	</div>
 
 	<div
-		class="absolute top-[40%] z-50 h-150 w-full bg-linear-to-tr from-almost-black to-black opacity-85 blur-3xl"
+		class="absolute top-2/5 z-50 h-150 w-full bg-linear-to-tr from-almost-black to-surface opacity-85 blur-3xl"
 	></div>
 	<div
-		class="absolute top-[80%] z-50 h-150 w-full bg-linear-to-tr from-almost-black to-black blur-3xl"
+		class="absolute top-4/5 z-50 h-150 w-full bg-linear-to-tr from-almost-black to-surface blur-3xl"
 	></div>
 </section>

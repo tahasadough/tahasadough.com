@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Spring } from 'svelte/motion';
-	import { screen } from '$lib/stores/screen.svelte';
+	import { screen } from '$lib/screen.svelte';
 	import type { Snippet } from 'svelte';
 
 	const coords = new Spring({ x: 50, y: 50 }, { stiffness: 0.1, damping: 2 });
@@ -29,6 +29,15 @@
 </script>
 
 {#if screen.isDesktop}
+	<div
+		class="pointer-events-none fixed z-999 rounded-full bg-white/20 blur-md"
+		style="
+			width: {size.current * 5}px;
+			height: {size.current * 5}px;
+			transform: translate3d({coords.current.x}px, {coords.current.y}px, 0) translate(-50%, -50%);
+			will-change: transform;
+		"
+	></div>
 	<div
 		class="pointer-events-none fixed z-1000 rounded-full bg-white mix-blend-difference"
 		style="

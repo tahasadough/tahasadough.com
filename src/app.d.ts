@@ -8,4 +8,9 @@ declare global {
 	}
 }
 
+declare module '*.ico' {
+	const src: string;
+	export default src;
+}
+
 export {};

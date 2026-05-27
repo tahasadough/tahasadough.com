@@ -1,4 +1,4 @@
-import type { Link } from '$lib/types/types.common';
+import type { Link } from '$lib/types';
 
 export const navLinks: Link[] = [
 	{ href: '#about', name: 'About' },

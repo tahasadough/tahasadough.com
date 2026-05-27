@@ -6,8 +6,7 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		adapter: adapter(),
-		inlineStyleThreshold: 50000
+		adapter: adapter({ runtime: 'nodejs22.x' })
 	}
 };
 

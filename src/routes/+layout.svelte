@@ -1,19 +1,21 @@
 <script lang="ts">
 	import './layout.css';
 	import { favicon } from '$lib';
-	import { LenisProvider } from '$lib';
 	import { MousetrailProvider } from '$lib';
+	import { SmoothScrollProvider } from '$lib';
+	import { ThemeProvider } from '$lib';
 
 	let { children } = $props();
 </script>
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
-	<meta name="google" content="notranslate" />
 </svelte:head>
 
-<LenisProvider>
-	<MousetrailProvider>
-		{@render children()}
-	</MousetrailProvider>
-</LenisProvider>
+<ThemeProvider>
+	<SmoothScrollProvider>
+		<MousetrailProvider>
+			{@render children()}
+		</MousetrailProvider>
+	</SmoothScrollProvider>
+</ThemeProvider>
