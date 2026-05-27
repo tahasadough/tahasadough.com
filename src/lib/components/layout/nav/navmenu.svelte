@@ -26,8 +26,8 @@
 		class="relative z-50 flex h-5 w-6 flex-col items-center justify-center gap-2 focus:outline-none"
 		aria-label="Toggle Menu"
 	>
-		{@render burgerLine('transition-transform origin-center', 'rotate-45 translate-y-5px')}
-		{@render burgerLine('transition-transform origin-center', '-rotate-45 -translate-y-5px')}
+		{@render burgerLine('origin-center', 'rotate-45 translate-y-[5px]')}
+		{@render burgerLine('origin-center', '-rotate-45 -translate-y-[5px]')}
 	</button>
 
 	{#if isToggled}
