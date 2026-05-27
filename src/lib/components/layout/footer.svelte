@@ -1,6 +1,10 @@
 <script lang="ts">
-	import type { Link } from '$lib/types';
 	import ProfileLink from '../ui/profile-link.svelte';
+
+	interface Link {
+		href: string;
+		name: string;
+	}
 
 	interface FooterLink extends Link {
 		target?: '_blank';
@@ -18,7 +22,7 @@
 			target: '_blank'
 		},
 		{
-			href: 'https://medium.com/@@tahasadoughdev',
+			href: 'https://medium.com/@tahasadoughdev',
 			name: 'Medium'
 		}
 	];

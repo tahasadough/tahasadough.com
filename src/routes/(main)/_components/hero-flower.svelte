@@ -6,19 +6,21 @@
 
 	let scrollY = $state(0);
 
+	let initialTop = $state(0);
 	let isReady = $state(false);
 
 	const motion = new Spring({ y: 0, r: 0 }, { stiffness: 0.05, damping: 0.7 });
 
 	$effect(() => {
-		if (wrapper) {
-			if (!isReady) {
-				isReady = true;
-			}
+		if (wrapper && !isReady) {
+			initialTop = wrapper.getBoundingClientRect().top + scrollY;
+			isReady = true;
+		}
+	});
 
-			const top = wrapper.getBoundingClientRect().top + scrollY - motion.current.y;
-
-			const p = Math.max(0, Math.min(1, (scrollY - (top - 500)) / 1300));
+	$effect(() => {
+		if (isReady) {
+			const p = Math.max(0, Math.min(1, (scrollY - (initialTop - 500)) / 1300));
 
 			motion.target = { y: p * 230, r: p * 45 };
 		}
@@ -42,6 +44,10 @@
 				alt=""
 				aria-hidden="true"
 				fetchpriority="high"
+				sizes="(max-width: 768px) 90vw, 500px"
+				onerror={({ currentTarget }) => {
+					(currentTarget as HTMLElement).style.display = 'none';
+				}}
 				class="size-90 object-cover md:size-125"
 			/>
 			<div

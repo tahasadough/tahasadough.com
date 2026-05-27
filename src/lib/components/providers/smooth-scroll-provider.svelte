@@ -19,11 +19,16 @@
 		const clamp = (v: number) =>
 			Math.max(0, Math.min(v, document.documentElement.scrollHeight - window.innerHeight));
 
+		const startLoop = () => {
+			if (!rafId) rafId = requestAnimationFrame(tick);
+		};
+
 		const onWheel = (e: WheelEvent) => {
 			e.preventDefault();
 			let delta = e.deltaY;
 			if (e.deltaMode === 1) delta *= 30;
 			target = clamp(target + delta);
+			startLoop();
 		};
 
 		const onClick = (e: MouseEvent) => {
@@ -36,6 +41,7 @@
 			e.preventDefault();
 			target = clamp(document.getElementById(id)!.getBoundingClientRect().top + window.scrollY);
 			current = window.scrollY;
+			startLoop();
 		};
 
 		const tick = () => {
@@ -43,10 +49,11 @@
 			if (Math.abs(diff) > 0.5) {
 				current += diff * 0.09;
 				window.scrollTo(0, Math.round(current));
+				rafId = requestAnimationFrame(tick);
 			} else {
 				current = target;
+				rafId = 0;
 			}
-			rafId = requestAnimationFrame(tick);
 		};
 
 		window.addEventListener('wheel', onWheel, { passive: false });

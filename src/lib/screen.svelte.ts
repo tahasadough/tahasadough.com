@@ -17,6 +17,11 @@ class Screen {
 		this.width = window.innerWidth;
 		this.height = window.innerHeight;
 	}
+
+	destroy() {
+		if (!browser) return;
+		window.removeEventListener('resize', this.#update);
+	}
 }
 
 export const screen = new Screen();

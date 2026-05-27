@@ -27,6 +27,9 @@
 		alt=""
 		aria-hidden="true"
 		loading="lazy"
+		onerror={({ currentTarget }) => {
+			(currentTarget as HTMLElement).style.display = 'none';
+		}}
 		class="absolute inset-0 -z-20 size-full object-cover select-none"
 	/>
 </section>

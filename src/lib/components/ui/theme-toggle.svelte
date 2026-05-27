@@ -3,17 +3,24 @@
 	import { Sun, Moon } from '$lib';
 
 	let rotating = $state(false);
+	let timeoutId: ReturnType<typeof setTimeout>;
+
+	$effect(() => {
+		return () => clearTimeout(timeoutId);
+	});
 
 	function handleToggle() {
 		rotating = true;
 		theme.toggle();
-		setTimeout(() => (rotating = false), 600);
+		clearTimeout(timeoutId);
+		timeoutId = setTimeout(() => (rotating = false), 600);
 	}
 </script>
 
 <button
 	onclick={handleToggle}
 	aria-label={theme.current === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+	aria-pressed={theme.current === 'light'}
 	class="cursor-pointer rounded-lg p-1.5 transition-all duration-500 ease-spring hover:bg-lighter-black hover:text-gray {rotating
 		? 'scale-110 rotate-360'
 		: ''}"

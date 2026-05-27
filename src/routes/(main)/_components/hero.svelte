@@ -1,5 +1,5 @@
 <script lang="ts">
-	import HeroMetalicFlower from './hero-metalic-flower.svelte';
+	import HeroFlower from './hero-flower.svelte';
 	import { Badge } from '$lib';
 	import { Button } from '$lib';
 </script>
@@ -25,5 +25,5 @@
 		>
 	</div>
 
-	<HeroMetalicFlower />
+	<HeroFlower />
 </section>

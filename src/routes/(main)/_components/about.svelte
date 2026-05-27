@@ -11,8 +11,11 @@
 	<Card class="overflow-hidden p-0 sm:size-7/10 lg:size-full">
 		<enhanced:img
 			src={tahaSadoughLg}
-			alt="Taha Sadough"
+			alt="Taha Sadough, Software Engineer"
 			loading="lazy"
+			onerror={({ currentTarget }) => {
+				(currentTarget as HTMLElement).style.display = 'none';
+			}}
 			class="size-full object-cover transition-all duration-700 hover:scale-105"
 		/>
 	</Card>

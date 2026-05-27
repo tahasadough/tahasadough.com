@@ -17,6 +17,7 @@
 	stroke-width="2"
 	stroke-linecap="round"
 	stroke-linejoin="round"
+	aria-hidden="true"
 	{...rest}
 >
 	<circle cx="11" cy="11" r="8" />

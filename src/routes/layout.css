@@ -42,6 +42,12 @@
 	--scrollbar-thumb: #ddd2c4;
 	--scrollbar-track: #f2ebe3;
 	--shadow-navbar: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+	--color-almost-black: #f2ebe3;
+	--color-lighter-black: #ffffff;
+	--color-light-black: #ddd2c4;
+	--color-gray: #59493a;
+	--color-surface: #faf5ef;
+	--color-on-surface: #1f1a16;
 }
 
 html {
@@ -89,27 +95,8 @@ html::-webkit-scrollbar-thumb {
 	}
 }
 
-@keyframes float {
-	0%,
-	100% {
-		transform: translateY(0);
-	}
-	50% {
-		transform: translateY(-15px);
-	}
-}
-
 .container {
-	@apply mx-auto w-full px-4 sm:px-8 lg:px-16 xl:px-14 2xl:px-40;
-}
-
-.light {
-	--color-almost-black: #f2ebe3;
-	--color-lighter-black: #ffffff;
-	--color-light-black: #ddd2c4;
-	--color-gray: #59493a;
-	--color-surface: #faf5ef;
-	--color-on-surface: #1f1a16;
+	@apply mx-auto w-full px-4 sm:px-8 lg:px-16 xl:px-20 2xl:px-40;
 }
 
 @media (prefers-reduced-motion: reduce) {

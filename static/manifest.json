@@ -4,8 +4,14 @@
 	"description": "Software Engineer specializing in scalable, high-performance systems & APIs.",
 	"start_url": "/",
 	"display": "standalone",
+	"display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
 	"background_color": "#000000",
 	"theme_color": "#000000",
+	"orientation": "any",
+	"categories": ["portfolio", "technology", "developer"],
+	"lang": "en",
+	"dir": "ltr",
+	"prefer_related_applications": false,
 	"icons": [
 		{
 			"src": "/pwa-192.png",

@@ -1,4 +1,7 @@
-import type { Link } from '$lib/types';
+interface Link {
+	href: string;
+	name: string;
+}
 
 export const navLinks: Link[] = [
 	{ href: '#about', name: 'About' },
