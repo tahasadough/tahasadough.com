@@ -28,7 +28,7 @@
 		"vitest": "^4.0.15"
 	},
 	"private": true,
-	"packageManager": "pnpm@11.4.0",
+	"packageManager": "pnpm@9.1.0",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
