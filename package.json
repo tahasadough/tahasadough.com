@@ -1,6 +1,6 @@
 {
 	"name": "tahasadough.com",
-	"version": "0.7.2",
+	"version": "0.8.0",
 	"devDependencies": {
 		"@eslint/compat": "^1.4.1",
 		"@eslint/js": "^9.39.4",
