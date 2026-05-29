@@ -6,7 +6,7 @@
 
 <section id="contact" class="relative flex flex-col items-center justify-center gap-7 py-32">
 	<Badge>Contact</Badge>
-	<h2 class="text-3xl text-center lg:text-5xl">
+	<h2 class="text-center text-3xl lg:text-5xl">
 		<span class="text-gray">Let&apos;s Get </span> in Touch
 	</h2>
 	<p class="text-center text-base text-gray">Let&apos;s start ASAP.</p>

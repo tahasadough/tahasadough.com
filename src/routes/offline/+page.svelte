@@ -23,7 +23,7 @@
 	<p class="max-w-md text-gray">
 		{online
 			? 'Back online! Try refreshing the page.'
-			: 'The page you requested isn\'t cached. Connect to the internet and try again.'}
+			: "The page you requested isn't cached. Connect to the internet and try again."}
 	</p>
 	{#if online}
 		<a

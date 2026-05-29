@@ -1,6 +1,28 @@
 {
 	"name": "tahasadough.com",
-	"version": "0.8.0",
+	"private": true,
+	"version": "0.8.1",
+	"type": "module",
+	"packageManager": "pnpm@9.15.9",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"prepare": "husky",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"format": "prettier --write .",
+		"lint": "prettier --check . && eslint .",
+		"test:unit": "vitest",
+		"test": "pnpm test:unit --run",
+		"validate": "pnpm check && pnpm test && pnpm build"
+	},
+	"lint-staged": {
+		"*.{svelte,js,ts}": [
+			"eslint --fix",
+			"prettier --write"
+		]
+	},
 	"devDependencies": {
 		"@eslint/compat": "^1.4.1",
 		"@eslint/js": "^9.39.4",
@@ -16,6 +38,7 @@
 		"globals": "^16.5.0",
 		"husky": "^9.1.7",
 		"jsdom": "^29.1.1",
+		"lint-staged": "^17.0.5",
 		"prettier": "^3.8.3",
 		"prettier-plugin-svelte": "^3.5.2",
 		"prettier-plugin-tailwindcss": "^0.7.4",
@@ -27,22 +50,6 @@
 		"vite": "^7.3.3",
 		"vitest": "^4.1.7"
 	},
-	"private": true,
-	"packageManager": "pnpm@9.15.9",
-	"scripts": {
-		"dev": "vite dev",
-		"build": "vite build",
-		"preview": "vite preview",
-		"prepare": "husky",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"format": "prettier --write .",
-		"lint": "prettier --check . && eslint .",
-		"test:unit": "vitest",
-		"test": "pnpm test:unit --run",
-		"verify": "pnpm test && pnpm check && pnpm build"
-	},
-	"type": "module",
 	"dependencies": {
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
