@@ -2,7 +2,7 @@
 	import { slide, fly, fade } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
 	import { browser } from '$app/environment';
-	import { navLinks } from './nav.constants';
+	import { navLinks } from './nav';
 
 	let isToggled = $state(false);
 	let triggerRef = $state<HTMLButtonElement>();

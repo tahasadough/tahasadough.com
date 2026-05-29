@@ -1,7 +1,7 @@
 <script lang="ts">
 	import ProfileLink from '$lib/components/ui/profile-link.svelte';
 	import ThemeToggle from '$lib/components/ui/theme-toggle.svelte';
-	import { navLinks } from './nav.constants';
+	import { navLinks } from './nav';
 	import Navmenu from './navmenu.svelte';
 
 	let scrollY = $state(0);
