@@ -1,5 +1,24 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+// @vitest-environment jsdom
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { parseTheme, theme } from './theme.svelte';
+
+vi.mock('$app/environment', () => ({
+	browser: true
+}));
+
+vi.hoisted(() => {
+	Object.defineProperty(window, 'matchMedia', {
+		writable: true,
+		value: vi.fn().mockImplementation((query) => ({
+			matches: false,
+			media: query,
+			onchange: null,
+			addEventListener: vi.fn(),
+			removeEventListener: vi.fn(),
+			dispatchEvent: vi.fn()
+		}))
+	});
+});
 
 beforeEach(() => {
 	localStorage.clear();

@@ -19,5 +19,4 @@ export { default as ThemeToggle } from './components/ui/theme-toggle.svelte';
 export { theme } from './theme.svelte.ts';
 export { screen } from './screen.svelte.ts';
 export { cn } from './cn.ts';
-export { default as favicon } from './assets/favicon.ico';
 export * from './components/ui/icons';

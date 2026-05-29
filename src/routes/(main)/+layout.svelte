@@ -35,10 +35,12 @@
 	});
 
 	function applyUpdate() {
-		if (!registration?.waiting) return;
-		registration.waiting.postMessage('SKIP_WAITING');
-		registration.waiting.addEventListener('statechange', () => {
-			if (registration?.waiting?.state === 'activated') {
+		updateAvailable = false;
+		const waitingWorker = registration?.waiting;
+		if (!waitingWorker) return;
+		waitingWorker.postMessage('SKIP_WAITING');
+		waitingWorker.addEventListener('statechange', () => {
+			if (waitingWorker.state === 'activated') {
 				window.location.reload();
 			}
 		});

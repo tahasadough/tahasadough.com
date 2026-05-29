@@ -1,6 +1,5 @@
 <script lang="ts">
 	import './layout.css';
-	import { favicon } from '$lib';
 	import { MousetrailProvider } from '$lib';
 	import { SmoothScrollProvider } from '$lib';
 	import { ThemeProvider } from '$lib';
@@ -18,7 +17,7 @@
 </script>
 
 <svelte:head>
-	<link rel="icon" href={favicon} />
+	<link rel="icon" href="/favicon.ico" />
 </svelte:head>
 
 <ThemeProvider>
