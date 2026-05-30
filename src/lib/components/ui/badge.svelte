@@ -5,7 +5,7 @@
 	import type { HTMLAttributes } from 'svelte/elements';
 
 	const variants = cva(
-		'z-40 text-sm transition-all duration-500 ease-spring bg-linear-to-r from-lighter-black to-light-black shadow-sm',
+		'z-40 text-sm transition-all duration-500 ease-spring bg-linear-to-r from-highlight to-muted shadow-sm',
 		{
 			variants: {
 				size: {

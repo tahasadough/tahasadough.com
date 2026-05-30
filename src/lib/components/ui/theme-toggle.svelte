@@ -21,7 +21,7 @@
 	onclick={handleToggle}
 	aria-label={theme.current === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
 	aria-pressed={theme.current === 'light'}
-	class="cursor-pointer rounded-lg p-1.5 transition-all duration-500 ease-spring hover:bg-lighter-black hover:text-gray {rotating
+	class="cursor-pointer rounded-lg p-1.5 transition-all duration-500 ease-spring hover:bg-highlight hover:text-gray {rotating
 		? 'scale-110 rotate-360'
 		: ''}"
 >

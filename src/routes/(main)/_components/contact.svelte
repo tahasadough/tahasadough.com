@@ -15,10 +15,10 @@
 	>
 	<div class="absolute inset-0 -z-10 h-full bg-surface opacity-90"></div>
 	<div
-		class="animate-blob absolute -top-20 left-0 h-2/5 w-full bg-linear-to-br from-almost-black to-surface blur-3xl"
+		class="animate-blob absolute -top-20 left-0 h-2/5 w-full bg-linear-to-br from-elevated to-surface blur-3xl"
 	></div>
 	<div
-		class="animate-blob absolute top-98 bottom-0 left-0 h-1/3 w-full bg-linear-to-br from-almost-black to-surface blur-3xl"
+		class="animate-blob absolute top-98 bottom-0 left-0 h-1/3 w-full bg-linear-to-br from-elevated to-surface blur-3xl"
 		style="animation-delay: -5s; animation-duration: 12s;"
 	></div>
 

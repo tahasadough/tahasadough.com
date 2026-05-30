@@ -1,14 +1,9 @@
 @import 'tailwindcss';
 
-:root {
-	--scrollbar-thumb: #333;
-	--scrollbar-track: #0e0e0e;
-}
-
 @theme {
-	--color-almost-black: #0e0e0e;
-	--color-lighter-black: #1e1e1e;
-	--color-light-black: #333333;
+	--color-elevated: #0e0e0e;
+	--color-highlight: #1e1e1e;
+	--color-muted: #333333;
 	--color-gray: #999999;
 	--color-surface: #000;
 	--color-on-surface: #fff;
@@ -39,32 +34,13 @@
 }
 
 .light {
-	--scrollbar-thumb: #ddd2c4;
-	--scrollbar-track: #f2ebe3;
 	--shadow-navbar: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-	--color-almost-black: #f2ebe3;
-	--color-lighter-black: #ffffff;
-	--color-light-black: #ddd2c4;
+	--color-elevated: #f2ebe3;
+	--color-highlight: #ffffff;
+	--color-muted: #ddd2c4;
 	--color-gray: #59493a;
 	--color-surface: #faf5ef;
 	--color-on-surface: #1f1a16;
-}
-
-html {
-	scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
-}
-
-html::-webkit-scrollbar {
-	width: 6px;
-}
-
-html::-webkit-scrollbar-track {
-	background: var(--scrollbar-track);
-}
-
-html::-webkit-scrollbar-thumb {
-	background: var(--scrollbar-thumb);
-	border-radius: 3px;
 }
 
 @custom-variant light (&:where(.light, .light *));

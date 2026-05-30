@@ -5,11 +5,11 @@
 	import type { HTMLAttributeAnchorTarget, HTMLAttributes } from 'svelte/elements';
 
 	const variants = cva(
-		'cursor-pointer rounded-3xl font-bold transition-all duration-500 hover:scale-105 hover:shadow-lg hover:bg-white hover:text-almost-black light:hover:bg-black light:hover:text-white light:hover:shadow-black/20',
+		'cursor-pointer rounded-3xl font-bold transition-all duration-500 hover:scale-105 hover:shadow-lg hover:bg-white hover:text-elevated light:hover:bg-black light:hover:text-white light:hover:shadow-black/20',
 		{
 			variants: {
 				variant: {
-					default: 'bg-almost-black',
+					default: 'bg-elevated',
 					outline: 'border-gray border'
 				},
 				size: {

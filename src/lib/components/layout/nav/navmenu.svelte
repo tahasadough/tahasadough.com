@@ -83,7 +83,7 @@
 			aria-label="Mobile menu"
 			tabindex="-1"
 			transition:slide={{ duration: 400, axis: 'y', easing: quintOut }}
-			class="fixed top-0 right-0 z-40 w-full border-b border-light-black bg-almost-black/95 backdrop-blur-lg"
+			class="fixed top-0 right-0 z-40 w-full border-b border-muted bg-elevated/95 backdrop-blur-lg"
 		>
 			<ul class="space-y-5 px-5 pt-16 pb-10 text-lg">
 				{#each navLinks as link, i (i)}

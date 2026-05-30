@@ -60,9 +60,9 @@
 	</div>
 
 	<div
-		class="absolute top-2/5 z-50 h-150 w-full bg-linear-to-tr from-almost-black to-surface opacity-85 blur-3xl"
+		class="absolute top-2/5 z-50 h-150 w-full bg-linear-to-tr from-elevated to-surface opacity-85 blur-3xl"
 	></div>
 	<div
-		class="absolute top-4/5 z-50 h-150 w-full bg-linear-to-tr from-almost-black to-surface blur-3xl"
+		class="absolute top-4/5 z-50 h-150 w-full bg-linear-to-tr from-elevated to-surface blur-3xl"
 	></div>
 </section>

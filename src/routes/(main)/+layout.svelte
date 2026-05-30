@@ -50,7 +50,7 @@
 {#if updateAvailable}
 	<button
 		onclick={applyUpdate}
-		class="fixed right-4 bottom-4 z-50 cursor-pointer rounded-lg bg-almost-black px-4 py-2 text-sm text-on-surface shadow-lg transition-colors hover:opacity-80"
+		class="fixed right-4 bottom-4 z-50 cursor-pointer rounded-lg bg-elevated px-4 py-2 text-sm text-on-surface shadow-lg transition-colors hover:opacity-80"
 	>
 		Update available — click to refresh
 	</button>
@@ -58,7 +58,7 @@
 
 <a
 	href="#main-content"
-	class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:rounded-lg focus:bg-almost-black focus:px-4 focus:py-2 focus:text-on-surface focus:ring-2 focus:ring-on-surface"
+	class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:rounded-lg focus:bg-elevated focus:px-4 focus:py-2 focus:text-on-surface focus:ring-2 focus:ring-on-surface"
 >
 	Skip to content
 </a>

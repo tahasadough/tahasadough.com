@@ -12,8 +12,8 @@
 
 <div
 	class="fixed top-0 left-0 z-50 flex w-full items-center border-b p-4 text-sm transition-navbar md:px-14 md:py-6 xl:px-56 {isScrolled
-		? 'border-light-black bg-almost-black/90 shadow-navbar backdrop-blur-xl'
-		: 'border-transparent bg-almost-black/60 backdrop-blur-md'}"
+		? 'border-muted bg-elevated/90 shadow-navbar backdrop-blur-xl'
+		: 'border-transparent bg-elevated/60 backdrop-blur-md'}"
 >
 	<div class="flex flex-1 items-center">
 		<a href="/" class="group z-60 flex items-center gap-2">

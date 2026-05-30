@@ -28,7 +28,7 @@
 	{#if online}
 		<a
 			href="/"
-			class="rounded-lg bg-almost-black px-4 py-2 text-on-surface transition-colors hover:opacity-80"
+			class="rounded-lg bg-elevated px-4 py-2 text-on-surface transition-colors hover:opacity-80"
 		>
 			Go Home
 		</a>
