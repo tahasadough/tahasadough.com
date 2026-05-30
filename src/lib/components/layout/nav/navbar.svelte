@@ -16,7 +16,7 @@
 		: 'border-transparent bg-almost-black/60 backdrop-blur-md'}"
 >
 	<div class="flex flex-1 items-center">
-		<a href="#home" class="group z-60 flex items-center gap-2">
+		<a href="/" class="group z-60 flex items-center gap-2">
 			<enhanced:img
 				src={tahaSadoughSm}
 				alt=""
