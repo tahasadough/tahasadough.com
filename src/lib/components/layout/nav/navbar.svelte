@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ProfileLink from '$lib/components/ui/profile-link.svelte';
+	import { tahaSadoughSm } from '$lib';
 	import ThemeToggle from '$lib/components/ui/theme-toggle.svelte';
 	import { navLinks } from './nav';
 	import Navmenu from './navmenu.svelte';
@@ -16,7 +16,18 @@
 		: 'border-transparent bg-almost-black/60 backdrop-blur-md'}"
 >
 	<div class="flex flex-1 items-center">
-		<ProfileLink class="z-50" href="home" />
+		<a href="#home" class="group z-60 flex items-center gap-2">
+			<enhanced:img
+				src={tahaSadoughSm}
+				alt=""
+				aria-hidden="true"
+				onerror={({ currentTarget }) => {
+					(currentTarget as HTMLElement).style.display = 'none';
+				}}
+				class="size-6.5 rounded-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:ring-2 group-hover:ring-gray/50"
+			/>
+			<span class="font-bold transition-all duration-500 group-hover:text-gray">Taha Sadough</span>
+		</a>
 	</div>
 
 	<nav aria-label="Desktop navigation" class="hidden md:block">
