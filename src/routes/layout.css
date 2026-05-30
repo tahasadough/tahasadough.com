@@ -17,13 +17,34 @@
 		0 10px 15px -3px rgba(255, 255, 255, 0.05), 0 4px 6px -4px rgba(255, 255, 255, 0.05);
 	--background-size-200: 200% auto;
 	--duration-1500: 1500ms;
-}
+	--animate-gradient: gradient 4s linear infinite;
+	--animate-blob: blob 10s ease-in-out infinite;
 
-@utility transition-navbar {
-	transition:
-		border-color 300ms,
-		box-shadow 500ms,
-		backdrop-filter 500ms;
+	@keyframes gradient {
+		0%,
+		100% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+	}
+
+	@keyframes blob {
+		0%,
+		100% {
+			transform: translate(0, 0) scale(1);
+		}
+		25% {
+			transform: translate(30px, -30px) scale(1.1);
+		}
+		50% {
+			transform: translate(-20px, 20px) scale(0.95);
+		}
+		75% {
+			transform: translate(20px, 30px) scale(1.05);
+		}
+	}
 }
 
 @layer base {
@@ -31,6 +52,17 @@
 		@apply outline-2 outline-offset-2;
 		outline-color: var(--color-on-surface);
 	}
+}
+
+@utility container {
+	@apply mx-auto w-full px-4 sm:px-8 lg:px-16 xl:px-20 2xl:px-40;
+}
+
+@utility transition-navbar {
+	transition:
+		border-color 300ms,
+		box-shadow 500ms,
+		backdrop-filter 500ms;
 }
 
 .light {
@@ -44,36 +76,6 @@
 }
 
 @custom-variant light (&:where(.light, .light *));
-
-@keyframes gradient {
-	0%,
-	100% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-}
-
-@keyframes blob {
-	0%,
-	100% {
-		transform: translate(0, 0) scale(1);
-	}
-	25% {
-		transform: translate(30px, -30px) scale(1.1);
-	}
-	50% {
-		transform: translate(-20px, 20px) scale(0.95);
-	}
-	75% {
-		transform: translate(20px, 30px) scale(1.05);
-	}
-}
-
-.container {
-	@apply mx-auto w-full px-4 sm:px-8 lg:px-16 xl:px-20 2xl:px-40;
-}
 
 @media (prefers-reduced-motion: reduce) {
 	*,
