@@ -5,7 +5,6 @@
 </script>
 
 <section
-	id="home"
 	class="container flex flex-col items-center justify-center space-y-11.25 pt-36 pb-10 md:space-y-16 md:pt-30 md:pb-0 lg:space-y-25 lg:pt-35"
 >
 	<div class="flex flex-col items-center justify-center gap-9">
