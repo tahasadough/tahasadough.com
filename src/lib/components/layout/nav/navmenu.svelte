@@ -1,105 +1,46 @@
 <script lang="ts">
-	import { slide, fly, fade } from 'svelte/transition';
-	import { quintOut } from 'svelte/easing';
-	import { browser } from '$app/environment';
 	import { navLinks } from './nav';
-
-	let isToggled = $state(false);
-	let triggerRef = $state<HTMLButtonElement>();
-	let menuRef = $state<HTMLElement>();
-
-	const toggleMenu = () => {
-		const next = !isToggled;
-		isToggled = next;
-		if (next) {
-			requestAnimationFrame(() => {
-				menuRef?.querySelector('a')?.focus();
-			});
-		} else if (browser) {
-			triggerRef?.focus();
-		}
-	};
-
-	const closeMenu = () => {
-		isToggled = false;
-		triggerRef?.focus();
-	};
-
-	$effect(() => {
-		if (!isToggled || !browser) return;
-
-		function onKeydown(e: KeyboardEvent) {
-			if (e.key === 'Escape') {
-				closeMenu();
-				return;
-			}
-			if (e.key !== 'Tab') return;
-
-			const focusable = menuRef?.querySelectorAll<HTMLElement>('a, button');
-			if (!focusable || focusable.length === 0) return;
-
-			const first = focusable[0];
-			const last = focusable[focusable.length - 1];
-
-			if (e.shiftKey && document.activeElement === first) {
-				e.preventDefault();
-				last.focus();
-			} else if (!e.shiftKey && document.activeElement === last) {
-				e.preventDefault();
-				first.focus();
-			}
-		}
-
-		window.addEventListener('keydown', onKeydown);
-		return () => window.removeEventListener('keydown', onKeydown);
-	});
 </script>
 
-{#snippet burgerLine(baseClass: string, activeClass: string)}
-	<span
-		class="h-0.5 w-full rounded-full bg-on-surface duration-300 ease-in-out {baseClass} {isToggled
-			? activeClass
-			: ''}"
-	></span>
-{/snippet}
+<div class="group md:hidden">
+	<input type="checkbox" id="menu-toggle" class="peer hidden" />
 
-<div class="md:hidden">
-	<button
-		bind:this={triggerRef}
-		onclick={toggleMenu}
-		aria-expanded={isToggled}
-		aria-controls="mobile-menu"
-		class="relative z-50 flex h-5 w-6 flex-col items-center justify-center gap-2 focus:outline-none"
+	<label
+		for="menu-toggle"
+		class="relative z-50 flex h-5 w-6 cursor-pointer flex-col items-center justify-center gap-2"
 		aria-label="Toggle Menu"
 	>
-		{@render burgerLine('origin-center', 'rotate-45 translate-y-[5px]')}
-		{@render burgerLine('origin-center', '-rotate-45 -translate-y-[5px]')}
-	</button>
+		<span
+			class="h-0.5 w-full origin-center rounded-full bg-on-surface transition-all duration-300 ease-spring
+      group-has-checked:translate-y-1.25
+      group-has-checked:rotate-45"
+		></span>
+		<span
+			class="h-0.5 w-full origin-center rounded-full bg-on-surface transition-all duration-300 ease-spring group-has-checked:-translate-y-1.25 group-has-checked:-rotate-45"
+		></span>
+	</label>
 
-	{#if isToggled}
-		<nav
-			bind:this={menuRef}
-			id="mobile-menu"
-			aria-label="Mobile menu"
-			tabindex="-1"
-			transition:slide={{ duration: 400, axis: 'y', easing: quintOut }}
-			class="fixed top-0 right-0 z-40 w-full border-b border-muted bg-elevated/95 backdrop-blur-lg"
-		>
+	<label
+		for="menu-toggle"
+		class="invisible fixed inset-0 z-30 min-h-dvh bg-black/50 opacity-0 transition-all duration-300 peer-checked:visible peer-checked:opacity-100"
+		aria-hidden="true"
+	></label>
+
+	<nav
+		id="mobile-menu"
+		aria-label="Mobile menu"
+		class="fixed top-0 right-0 z-40 w-full -translate-y-full border-b border-muted bg-elevated/95 backdrop-blur-lg transition-all duration-300 peer-checked:translate-y-0"
+	>
+		<label for="menu-toggle" class="block">
 			<ul class="space-y-5 px-5 pt-16 pb-10 text-lg">
 				{#each navLinks as link, i (i)}
 					<li>
-						<a
-							in:fly={{ x: -30, duration: 400, delay: i * 50 }}
-							out:fade={{ duration: 200 }}
-							href={link.href}
-							onclick={closeMenu}
-							class="navmenu-link block transition-all duration-500 hover:text-gray"
-						>
+						<a href={link.href} class="block transition-all duration-500 hover:text-gray">
 							{link.name}
 						</a>
 					</li>
 				{/each}
 			</ul>
-		</nav>
-	{/if}
+		</label>
+	</nav>
 </div>
