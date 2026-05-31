@@ -30,7 +30,9 @@
 </script>
 
 {#snippet whyMeCard(title: string, text: string, Icon: typeof Clock)}
-	<Card class="group space-y-6">
+	<Card
+		class="group space-y-6 transition-all duration-300 ease-smooth hover:-translate-y-1 hover:border-gray/50 hover:shadow-card light:hover:border-gray/30 light:hover:shadow-card-light"
+	>
 		<div
 			class="flex size-12 items-center justify-center rounded-lg border border-muted bg-highlight transition-all duration-500 group-hover:border-gray/50 group-hover:bg-muted"
 		>

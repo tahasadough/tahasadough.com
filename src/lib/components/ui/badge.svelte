@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { cn } from '$lib';
 	import { cva, type VariantProps } from 'class-variance-authority';
 	import type { Snippet } from 'svelte';
 	import type { HTMLAttributes } from 'svelte/elements';
@@ -34,7 +33,9 @@
 
 	let { size, rounded, class: className, children, ...rest }: Props = $props();
 
-	const badgeClass = $derived(cn(variants({ size, rounded }), className));
+	const badgeClass = $derived(
+		className ? `${variants({ size, rounded })} ${className}` : variants({ size, rounded })
+	);
 </script>
 
 <span class={badgeClass} {...rest}>

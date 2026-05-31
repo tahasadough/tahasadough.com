@@ -1,21 +1,31 @@
 <script lang="ts">
-	import { cn } from '$lib';
+	import { cva, type VariantProps } from 'class-variance-authority';
 	import type { Snippet } from 'svelte';
 	import type { HTMLAttributes } from 'svelte/elements';
 
-	interface Props extends HTMLAttributes<HTMLDivElement> {
+	const variants = cva('rounded-2xl border border-muted bg-elevated', {
+		variants: {
+			variant: {
+				default: 'px-8 py-10',
+				ghost: 'p-0'
+			}
+		},
+		defaultVariants: {
+			variant: 'default'
+		}
+	});
+
+	interface Props extends VariantProps<typeof variants>, HTMLAttributes<HTMLDivElement> {
 		children: Snippet;
 	}
 
-	let { children, class: className, ...rest }: Props = $props();
+	let { variant, class: className, children, ...rest }: Props = $props();
+
+	const cardClass = $derived(
+		className ? `${variants({ variant })} ${className}` : variants({ variant })
+	);
 </script>
 
-<div
-	class={cn(
-		'rounded-2xl border border-muted bg-elevated px-8 py-10 transition-all duration-300 ease-smooth hover:-translate-y-1 hover:border-gray/50 hover:shadow-card light:hover:border-gray/30 light:hover:shadow-card-light',
-		className
-	)}
-	{...rest}
->
+<div class={cardClass} {...rest}>
 	{@render children()}
 </div>

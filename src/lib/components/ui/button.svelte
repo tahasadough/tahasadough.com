@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { cn } from '$lib';
 	import { cva, type VariantProps } from 'class-variance-authority';
 	import type { Snippet } from 'svelte';
 	import type { HTMLAttributeAnchorTarget, HTMLAttributes } from 'svelte/elements';
@@ -33,7 +32,9 @@
 
 	let { variant, size, class: className, href, target, children, ...rest }: Props = $props();
 
-	const buttonClass = $derived(cn(variants({ variant, size }), className));
+	const buttonClass = $derived(
+		className ? `${variants({ variant, size })} ${className}` : variants({ variant, size })
+	);
 </script>
 
 <svelte:element

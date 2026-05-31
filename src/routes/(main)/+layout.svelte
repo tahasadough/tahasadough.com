@@ -34,7 +34,7 @@
 			.catch(() => {});
 	});
 
-	function applyUpdate() {
+	const applyUpdate = () => {
 		updateAvailable = false;
 		const waitingWorker = registration?.waiting;
 		if (!waitingWorker) return;
@@ -44,7 +44,7 @@
 				window.location.reload();
 			}
 		});
-	}
+	};
 </script>
 
 {#if updateAvailable}

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { theme } from '$lib/theme.svelte';
 	import { Sun, Moon } from '$lib';
+	import { theme } from '$lib/theme.svelte';
 
 	let rotating = $state(false);
 	let timeoutId: ReturnType<typeof setTimeout>;
@@ -9,12 +9,12 @@
 		return () => clearTimeout(timeoutId);
 	});
 
-	function handleToggle() {
+	const handleToggle = () => {
 		rotating = true;
 		theme.toggle();
 		clearTimeout(timeoutId);
 		timeoutId = setTimeout(() => (rotating = false), 600);
-	}
+	};
 </script>
 
 <button
