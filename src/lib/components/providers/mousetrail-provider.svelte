@@ -30,21 +30,19 @@
 
 {#if screen.isDesktop}
 	<div
-		class="pointer-events-none fixed z-999 rounded-full bg-white/20 blur-md"
+		class="pointer-events-none fixed z-999 rounded-full bg-white/20 blur-md will-change-transform"
 		style="
 			width: {size.current * 5}px;
 			height: {size.current * 5}px;
 			transform: translate3d({coords.current.x}px, {coords.current.y}px, 0) translate(-50%, -50%);
-			will-change: transform;
 		"
 	></div>
 	<div
-		class="pointer-events-none fixed z-1000 rounded-full bg-white mix-blend-difference"
+		class="pointer-events-none fixed z-1000 rounded-full bg-white mix-blend-difference will-change-transform"
 		style="
 			width: {size.current * 2}px;
 			height: {size.current * 2}px;
 			transform: translate3d({coords.current.x}px, {coords.current.y}px, 0) translate(-50%, -50%);
-			will-change: transform;
 		"
 	></div>
 {/if}
