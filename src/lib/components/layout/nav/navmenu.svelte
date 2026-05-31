@@ -3,7 +3,7 @@
 </script>
 
 <div class="group md:hidden">
-	<input type="checkbox" id="menu-toggle" class="peer hidden" />
+	<input type="checkbox" id="menu-toggle" class="peer sr-only" />
 
 	<label
 		for="menu-toggle"
@@ -22,7 +22,7 @@
 
 	<label
 		for="menu-toggle"
-		class="invisible fixed inset-0 z-30 min-h-dvh bg-black/50 opacity-0 transition-all duration-300 peer-checked:visible peer-checked:opacity-100"
+		class="invisible fixed inset-0 z-30 min-h-dvh opacity-0 transition-all duration-300 peer-checked:visible peer-checked:opacity-100"
 		aria-hidden="true"
 	></label>
 
