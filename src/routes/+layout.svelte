@@ -1,6 +1,5 @@
 <script lang="ts">
 	import './layout.css';
-	import { MousetrailProvider } from '$lib';
 	import { ThemeProvider } from '$lib';
 	import { screen } from '$lib/screen.svelte';
 	import { theme } from '$lib/theme.svelte';
@@ -20,7 +19,5 @@
 </svelte:head>
 
 <ThemeProvider>
-	<MousetrailProvider>
-		{@render children()}
-	</MousetrailProvider>
+	{@render children()}
 </ThemeProvider>

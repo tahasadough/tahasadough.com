@@ -11,7 +11,6 @@ export { default as Button } from './components/ui/button.svelte';
 export { default as Card } from './components/ui/card.svelte';
 export { default as Navbar } from './components/layout/nav/navbar.svelte';
 export { default as Footer } from './components/layout/footer.svelte';
-export { default as MousetrailProvider } from './components/providers/mousetrail-provider.svelte';
 export { default as ThemeProvider } from './components/providers/theme-provider.svelte';
 export { default as ThemeToggle } from './components/ui/theme-toggle.svelte';
 export { theme } from './theme.svelte.ts';
