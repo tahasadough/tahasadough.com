@@ -5,7 +5,7 @@ export { default as tahaSadoughSm } from './assets/images/taha-sadough.webp?qual
 // @ts-expect-error - enhanced-img Vite query params
 export { default as metalicFlower } from './assets/images/metalic-flower.webp?quality=60&w=700';
 // @ts-expect-error - enhanced-img Vite query params
-export { default as metalicShape } from './assets/images/metalic-shape-background.webp?quality=60&w=800';
+export { default as metalicShape } from './assets/images/metalic-shape-background.webp?quality=45&w=600';
 export { default as Badge } from './components/ui/badge.svelte';
 export { default as Button } from './components/ui/button.svelte';
 export { default as Card } from './components/ui/card.svelte';
