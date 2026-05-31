@@ -16,5 +16,4 @@ export { default as ThemeProvider } from './components/providers/theme-provider.
 export { default as ThemeToggle } from './components/ui/theme-toggle.svelte';
 export { theme } from './theme.svelte.ts';
 export { screen } from './screen.svelte.ts';
-export { cn } from './cn.ts';
 export * from './components/ui/icons';
