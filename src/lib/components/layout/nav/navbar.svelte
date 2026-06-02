@@ -24,7 +24,7 @@
 				onerror={({ currentTarget }) => {
 					(currentTarget as HTMLElement).style.display = 'none';
 				}}
-				class="size-6.5 rounded-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:ring-2 group-hover:ring-gray/50"
+				class="size-6.5 rounded-full object-cover object-top transition-all duration-500 group-hover:scale-110 group-hover:ring-2 group-hover:ring-gray/50"
 			/>
 			<span class="font-bold transition-all duration-500 group-hover:text-gray">Taha Sadough</span>
 		</a>

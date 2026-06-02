@@ -8,7 +8,7 @@
 	id="about"
 	class="container flex flex-col items-center justify-center pt-30 md:flex-col-reverse lg:flex-row"
 >
-	<Card variant="ghost" class="aspect-square overflow-hidden sm:w-7/10 lg:w-full">
+	<Card variant="ghost" class="aspect-[3/4] overflow-hidden sm:w-7/10 lg:w-full">
 		<enhanced:img
 			src={tahaSadoughLg}
 			alt="Taha Sadough, Software Engineer"
