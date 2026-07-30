@@ -20,12 +20,12 @@ run: build
 	./$(BINARY)
 
 dev:
-	npx @tailwindcss/cli -i ./css/input.css -o ./static/css/style.css --watch &
+	npx @tailwindcss/cli -i ./style.css -o ./static/style.css --watch &
 	templ generate --watch &
 	go run $(ENTRY_POINT)
 
 css:
-	npx @tailwindcss/cli -i ./css/input.css -o ./static/css/style.css --minify
+	npx @tailwindcss/cli -i ./style.css -o ./static/style.css --minify
 
 templ-gen:
 	templ generate
@@ -66,4 +66,4 @@ fix:
 	go fix ./...
 
 clean:
-	rm -rf $(BUILD_DIR) static/css _site
+	rm -rf $(BUILD_DIR) static/style.css _site

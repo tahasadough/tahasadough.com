@@ -65,7 +65,7 @@ func New() http.Handler {
 	year := 365 * 24 * time.Hour
 
 	mux.Handle("GET /images/", cache(year, true)(fs))
-	mux.Handle("GET /css/", cache(year, true)(fs))
+	mux.Handle("GET /style.css", cache(year, true)(fs))
 	mux.Handle("GET /js/", cache(year, true)(fs))
 	mux.Handle("GET /favicon.ico", cache(year, true)(fs))
 	mux.Handle("GET /apple-touch-icon.png", cache(year, true)(fs))

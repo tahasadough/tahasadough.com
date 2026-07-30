@@ -4,11 +4,11 @@ var OFFLINE_URL = '/offline';
 
 var ASSETS = [
   '/',
-  '/css/style.css',
-  '/js/app.js',
+  '/style.css',
+  '/js/index.js',
   '/images/taha-sadough.webp',
-  '/images/metalic-flower.webp',
-  '/images/metalic-shape-background.webp',
+  '/images/metallic-flower.webp',
+  '/images/metallic-shape-background.webp',
   '/favicon.ico',
   '/apple-touch-icon.png',
   '/pwa-192.png',
