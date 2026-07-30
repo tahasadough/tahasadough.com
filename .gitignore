@@ -1,12 +1,29 @@
 node_modules/
 bin/
 _site/
-static/css/
+static/style.css
+
+*_templ.go
+*.log
+*.test
+*.out
+*.test.exe
+coverage.out
 
 .DS_Store
 Thumbs.db
+Desktop.ini
+
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
 
 .env
 .env.*
 !.env.example
 !.env.test
+
+tmp/
+vendor/
