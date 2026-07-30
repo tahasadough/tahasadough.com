@@ -1,9 +1,5 @@
 {
 	"private": true,
-	"scripts": {
-		"css:build": "tailwindcss -i ./style.css -o ./static/style.css",
-		"css:watch": "tailwindcss -i ./style.css -o ./static/style.css --watch"
-	},
 	"devDependencies": {
 		"tailwindcss": "^4.3.0",
 		"@tailwindcss/cli": "^4.3.0"
