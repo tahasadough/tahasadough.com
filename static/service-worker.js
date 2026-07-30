@@ -5,7 +5,7 @@ var OFFLINE_URL = '/offline';
 var ASSETS = [
   '/',
   '/style.css',
-  '/js/index.js',
+  '/js/app.js',
   '/images/taha-sadough.webp',
   '/images/metallic-flower.webp',
   '/images/metallic-shape-background.webp',
