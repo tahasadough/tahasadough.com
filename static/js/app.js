@@ -7,7 +7,10 @@ window.toggleTheme = () => {
   localStorage.setItem("theme", theme);
 
   const btn = document.getElementById("theme-toggle");
-  btn?.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+  btn?.setAttribute(
+    "aria-label",
+    theme === "dark" ? "Switch to light mode" : "Switch to dark mode",
+  );
   btn?.setAttribute("aria-pressed", String(isLight));
 
   const icon = document.getElementById("theme-icon");
@@ -28,7 +31,9 @@ window.toggleTheme = () => {
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(() => {
-      document.getElementById("navbar")?.classList.toggle("scrolled", window.scrollY > 50);
+      document
+        .getElementById("navbar")
+        ?.classList.toggle("scrolled", window.scrollY > 50);
       ticking = false;
     });
   });
@@ -40,9 +45,12 @@ window.toggleTheme = () => {
   const DAMPING = 0.6;
 
   let initialTop = 0;
-  let currentY = 0, currentR = 0;
-  let velY = 0, velR = 0;
-  let targetY = 0, targetR = 0;
+  let currentY = 0,
+    currentR = 0;
+  let velY = 0,
+    velR = 0;
+  let targetY = 0,
+    targetR = 0;
   let running = false;
 
   const inner = () => document.getElementById("hero-flower-inner");
@@ -65,7 +73,10 @@ window.toggleTheme = () => {
     if (!initialTop) {
       initialTop = wrapper.getBoundingClientRect().top + window.scrollY;
     }
-    const p = Math.max(0, Math.min(1, (window.scrollY - (initialTop - 500)) / 1300));
+    const p = Math.max(
+      0,
+      Math.min(1, (window.scrollY - (initialTop - 500)) / 1300),
+    );
     targetY = p * 230;
     targetR = p * 45;
     if (!running) {
@@ -76,7 +87,10 @@ window.toggleTheme = () => {
 
   function tick() {
     const el = inner();
-    if (!el) { running = false; return; }
+    if (!el) {
+      running = false;
+      return;
+    }
     const forceY = (targetY - currentY) * STIFFNESS;
     const forceR = (targetR - currentR) * STIFFNESS;
     velY = (velY + forceY) * DAMPING;
@@ -120,7 +134,8 @@ window.toggleTheme = () => {
       msg.textContent = "Back online! Try refreshing the page.";
       if (link) link.style.display = "inline-block";
     } else {
-      msg.textContent = "The page you requested isn't cached. Connect to the internet and try again.";
+      msg.textContent =
+        "The page you requested isn't cached. Connect to the internet and try again.";
       if (link) link.style.display = "none";
     }
   };
@@ -135,7 +150,9 @@ window.toggleTheme = () => {
   if (!("serviceWorker" in navigator)) return;
 
   const notif = document.getElementById("update-notification");
-  const showUpdate = () => { if (notif) notif.style.display = ""; };
+  const showUpdate = () => {
+    if (notif) notif.style.display = "";
+  };
 
   navigator.serviceWorker
     .register("/service-worker.js")
@@ -144,7 +161,10 @@ window.toggleTheme = () => {
 
       reg.addEventListener("updatefound", () => {
         reg.installing?.addEventListener("statechange", () => {
-          if (reg.installing?.state === "installed" && navigator.serviceWorker.controller) {
+          if (
+            reg.installing?.state === "installed" &&
+            navigator.serviceWorker.controller
+          ) {
             showUpdate();
           }
         });
@@ -166,24 +186,6 @@ window.onSWUpdateClick = () => {
   });
 };
 
-// HTMX — smooth page navigation
-(() => {
-  if (typeof htmx === "undefined") return;
-
+if (typeof htmx !== "undefined") {
   htmx.config.globalViewTransitions = true;
-  let hasAnchor = false;
-
-  document.addEventListener("htmx:beforeSwap", (e) => {
-    if (e.detail.target !== document.body) return;
-    const anchor =
-      e.detail.pathInfo?.anchor ||
-      e.detail.requestConfig?.url?.split("#")[1];
-    hasAnchor = !!anchor;
-    if (!hasAnchor) window.scrollTo({ top: 0, behavior: "instant" });
-  });
-
-  document.addEventListener("htmx:afterSettle", () => {
-    document.getElementById("navbar")?.classList.toggle("scrolled", window.scrollY > 50);
-    if (!hasAnchor) window.scrollTo({ top: 0, behavior: "instant" });
-  });
-})();
+}
