@@ -1,5 +1,5 @@
 *.go                linguist-language=Go
-*.templ             linguist-language=templ
+*.templ             linguist-detectable=false
 
 **/*_templ.go       linguist-generated=true
 **/*_templ.go       linguist-vendored
@@ -8,5 +8,4 @@
 *.css               linguist-vendored
 *.html              linguist-vendored
 static/**           linguist-vendored
-
-*.templ             linguist-detectable=true
+Makefile            linguist-detectable=false
