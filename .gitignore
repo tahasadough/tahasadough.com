@@ -1,5 +1,7 @@
 node_modules/
 bin/
+_site/
+static/css/
 
 .DS_Store
 Thumbs.db
