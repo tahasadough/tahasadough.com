@@ -1,0 +1,35 @@
+package pages
+
+import (
+	"github.com/tahasadough/tahasadough.com/internal/web/components/ui"
+)
+
+templ hero() {
+	<section class="container flex flex-col items-center justify-center space-y-11.25 pt-36 pb-10 md:space-y-16 md:pt-30 md:pb-0 lg:space-y-25 lg:pt-35">
+		<div class="flex flex-col items-center justify-center gap-9">
+			@ui.Badge("Hello, I'm Taha 👋")
+			<h1 class="text-center text-3xl leading-none sm:text-5xl md:text-6xl">
+				<span class="animate-gradient bg-200 bg-linear-to-r from-on-surface via-gray to-on-surface bg-clip-text text-transparent">
+					Software Engineer
+				</span>
+				<br/>
+				<span class="text-gray">Architecting Scalable, High-Performance Systems &amp; APIs</span>
+			</h1>
+			@ui.Button("https://github.com/tahasadough") {
+				Connect me
+			}
+		</div>
+		<div id="hero-flower" class="relative -z-50 select-none">
+			<div id="hero-flower-inner">
+				<img
+					src="/images/metallic-flower.webp"
+					alt=""
+					aria-hidden="true"
+					fetchpriority="high"
+					class="size-90 object-cover transition-all duration-1500 ease-smooth md:size-125"
+					onerror="this.style.display='none'"
+				/>
+			</div>
+		</div>
+	</section>
+}

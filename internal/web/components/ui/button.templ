@@ -1,0 +1,13 @@
+package ui
+
+templ Button(href ...string) {
+	if len(href) > 0 {
+		<a href={ href[0] } target="_blank" rel="noopener noreferrer" class="cursor-pointer rounded-3xl font-bold transition-link hover:scale-105 hover:shadow-lg hover:bg-white hover:text-elevated light:hover:bg-black light:hover:text-white light:hover:shadow-black/20 border-gray border px-8 py-2.5">
+			{ children... }
+		</a>
+	} else {
+		<button class="cursor-pointer rounded-3xl font-bold transition-link hover:scale-105 hover:shadow-lg hover:bg-white hover:text-elevated light:hover:bg-black light:hover:text-white light:hover:shadow-black/20 border-gray border px-8 py-2.5">
+			{ children... }
+		</button>
+	}
+}
