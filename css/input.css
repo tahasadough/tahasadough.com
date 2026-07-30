@@ -48,9 +48,17 @@
 	transition: border-color 300ms, box-shadow 500ms, backdrop-filter 500ms;
 }
 
+@utility transition-link {
+	transition: all 500ms;
+}
+
 #navbar.scrolled {
 	border-color: color-mix(in srgb, var(--color-muted) 50%, transparent);
 	box-shadow: var(--shadow-navbar);
+}
+
+#hero-flower-inner {
+	will-change: transform;
 }
 
 .light {
