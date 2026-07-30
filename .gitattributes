@@ -1,9 +1,12 @@
-*.go              linguist-language=Go
-*.templ           linguist-language=templ
+*.go                linguist-language=Go
+*.templ             linguist-language=templ
 
-**/*_templ.go     linguist-generated=true
-**/*_templ.go     linguist-vendored
+**/*_templ.go       linguist-generated=true
+**/*_templ.go       linguist-vendored
 
-*.js              linguist-vendored
-*.css             linguist-vendored
-static/**         linguist-vendored
+*.js                linguist-vendored
+*.css               linguist-vendored
+*.html              linguist-vendored
+static/**           linguist-vendored
+
+*.templ             linguist-detectable=true
