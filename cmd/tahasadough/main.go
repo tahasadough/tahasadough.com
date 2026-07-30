@@ -9,10 +9,26 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/tahasadough/tahasadough.com/internal/server"
+	"github.com/tahasadough/tahasadough.com/internal/web"
 )
 
+var Version = "1.0.0"
+
 func main() {
+	if err := run(); err != nil {
+		log.Fatal(err)
+	}
+}
+
+func run() error {
+	mux := http.NewServeMux()
+
+	mux.HandleFunc("GET /", web.Home)
+	mux.HandleFunc("GET /offline", web.Offline)
+	mux.HandleFunc("GET /sitemap.xml", web.Sitemap)
+
+	registerStaticRoutes(mux)
+
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"
@@ -20,7 +36,7 @@ func main() {
 
 	srv := &http.Server{
 		Addr:              ":" + port,
-		Handler:           server.New(),
+		Handler:           mux,
 		ReadHeaderTimeout: 5 * time.Second,
 	}
 
@@ -28,7 +44,7 @@ func main() {
 	defer stop()
 
 	go func() {
-		log.Printf("listening on :%s", port)
+		log.Printf("tahasadough %s — listening on :%s", Version, port)
 		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 			log.Fatalf("server error: %v", err)
 		}
@@ -40,7 +56,22 @@ func main() {
 	shutdownCtx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 
-	if err := srv.Shutdown(shutdownCtx); err != nil {
-		log.Printf("shutdown error: %v", err)
-	}
+	return srv.Shutdown(shutdownCtx)
+}
+
+func registerStaticRoutes(mux *http.ServeMux) {
+	fs := http.FileServer(http.Dir("static"))
+	year := 365 * 24 * time.Hour
+
+	mux.Handle("GET /images/", web.Cache(year, true)(fs))
+	mux.Handle("GET /style.css", web.Cache(year, true)(fs))
+	mux.Handle("GET /js/", web.Cache(year, true)(fs))
+	mux.Handle("GET /favicon.ico", web.Cache(year, true)(fs))
+	mux.Handle("GET /apple-touch-icon.png", web.Cache(year, true)(fs))
+	mux.Handle("GET /pwa-192.png", web.Cache(year, true)(fs))
+	mux.Handle("GET /pwa-512.png", web.Cache(year, true)(fs))
+
+	mux.Handle("GET /manifest.json", web.Cache(1*time.Hour, false)(fs))
+	mux.Handle("GET /robots.txt", web.Cache(1*time.Hour, false)(fs))
+	mux.Handle("GET /service_worker.js", fs)
 }
