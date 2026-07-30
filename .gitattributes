@@ -1,7 +1,9 @@
-*.go          linguist-language=Go
-*.templ       linguist-language=templ
-*_templ.go    linguist-generated=true
+*.go              linguist-language=Go
+*.templ           linguist-language=templ
 
-*.js          linguist-vendored
-*.min.js      linguist-vendored
-static/**     linguist-vendored
+**/*_templ.go     linguist-generated=true
+**/*_templ.go     linguist-vendored
+
+*.js              linguist-vendored
+*.css             linguist-vendored
+static/**         linguist-vendored
