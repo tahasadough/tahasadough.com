@@ -9,7 +9,7 @@ import (
 	"syscall"
 	"time"
 
-	"tahasadough.com/internal/server"
+	"github.com/tahasadough/tahasadough.com/internal/server"
 )
 
 func main() {

@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"tahasadough.com/internal/handler"
+	"github.com/tahasadough/tahasadough.com/internal/handler"
 )
 
 var Version = "1.0.0"

@@ -4,7 +4,7 @@ package handler
 import (
 	"net/http"
 
-	"tahasadough.com/internal/views"
+	"github.com/tahasadough/tahasadough.com/internal/views"
 )
 
 const sitemapXML = `<?xml version="1.0" encoding="UTF-8"?>
