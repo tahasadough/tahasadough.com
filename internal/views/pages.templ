@@ -38,7 +38,7 @@ templ page(title, desc string, content templ.Component) {
 			class="overflow-x-hidden bg-surface font-sans text-on-surface antialiased"
 		>
 			@content
-			<script src="/js/app.js" defer></script>
+			<script type="module" src="/js/index.js"></script>
 		</body>
 	</html>
 }
@@ -88,7 +88,7 @@ templ OfflinePage() {
 					Go Home
 				</a>
 			</section>
-			<script src="/js/app.js" defer></script>
+			<script type="module" src="/js/index.js"></script>
 		</body>
 	</html>
 }

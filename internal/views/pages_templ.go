@@ -100,7 +100,7 @@ func page(title, desc string, content templ.Component) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "<script src=\"/js/app.js\" defer></script></body></html>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "<script type=\"module\" src=\"/js/index.js\"></script></body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -223,7 +223,7 @@ func OfflinePage() templ.Component {
 			templ_7745c5c3_Var7 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "<!doctype html><html lang=\"en\" class=\"overflow-x-hidden\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><link rel=\"stylesheet\" href=\"/css/style.css\"><title>Offline &mdash; Taha Sadough</title></head><body class=\"overflow-x-hidden bg-surface font-sans text-on-surface antialiased\"><section class=\"flex min-h-dvh flex-col items-center justify-center gap-4 px-4 text-center\"><div class=\"text-6xl\">&#9888;</div><h1 class=\"text-3xl font-bold\">You&apos;re Offline</h1><p class=\"max-w-md text-gray\" id=\"offline-message\">The page you requested isn&apos;t cached. Connect to the internet and try again.</p><a href=\"/\" class=\"rounded-lg bg-elevated px-4 py-2 text-on-surface transition-colors hover:opacity-80\" id=\"go-home-link\" style=\"display:none\">Go Home</a></section><script src=\"/js/app.js\" defer></script></body></html>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "<!doctype html><html lang=\"en\" class=\"overflow-x-hidden\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><link rel=\"stylesheet\" href=\"/css/style.css\"><title>Offline &mdash; Taha Sadough</title></head><body class=\"overflow-x-hidden bg-surface font-sans text-on-surface antialiased\"><section class=\"flex min-h-dvh flex-col items-center justify-center gap-4 px-4 text-center\"><div class=\"text-6xl\">&#9888;</div><h1 class=\"text-3xl font-bold\">You&apos;re Offline</h1><p class=\"max-w-md text-gray\" id=\"offline-message\">The page you requested isn&apos;t cached. Connect to the internet and try again.</p><a href=\"/\" class=\"rounded-lg bg-elevated px-4 py-2 text-on-surface transition-colors hover:opacity-80\" id=\"go-home-link\" style=\"display:none\">Go Home</a></section><script type=\"module\" src=\"/js/index.js\"></script></body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
