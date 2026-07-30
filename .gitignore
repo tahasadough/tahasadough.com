@@ -3,7 +3,6 @@ bin/
 _site/
 static/style.css
 
-*_templ.go
 *.log
 *.test
 *.out
