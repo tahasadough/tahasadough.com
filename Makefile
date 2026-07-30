@@ -30,7 +30,7 @@ css:
 templ-gen:
 	templ generate
 
-build-cf: css | $(BUILD_DIR)
+build-cf: css templ-gen | $(BUILD_DIR)
 	go build $(LDFLAGS) -o $(BINARY) $(ENTRY_POINT)
 	rm -rf _site
 	./$(BINARY) & \
