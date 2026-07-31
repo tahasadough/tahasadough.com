@@ -31,7 +31,7 @@ templ head(title, desc string) {
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<title>{ title }</title>
 		<meta name="description" content={ desc }/>
-		<meta name="theme-color" content="#000000"/>
+		<meta name="theme-color" id="theme-color" content="#000000"/>
 		<link rel="icon" href="/favicon.ico"/>
 		@templ.Raw(static.StyleCSS)
 		<meta name="keywords" content="software engineer, software developer, backend developer, system design, distributed systems, Go, Rust, TypeScript, APIs"/>

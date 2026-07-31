@@ -1,9 +1,15 @@
 const root = document.documentElement;
+const themeColor = document.querySelector('meta[name="theme-color"]');
+const setThemeColor = (isLight) =>
+  themeColor?.setAttribute("content", isLight ? "#faf5ef" : "#000000");
+
+setThemeColor(root.classList.contains("light"));
 
 window.toggleTheme = () => {
   const isLight = root.classList.toggle("light");
   const theme = isLight ? "light" : "dark";
   localStorage.setItem("theme", theme);
+  setThemeColor(isLight);
 
   const btn = document.getElementById("theme-toggle");
   btn?.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
