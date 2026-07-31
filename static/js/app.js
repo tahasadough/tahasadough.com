@@ -5,5 +5,3 @@ if (typeof htmx !== "undefined") {
 import "./theme.js";
 import "./navbar.js";
 import "./hero.js";
-import "./offline.js";
-import "./sw.js";

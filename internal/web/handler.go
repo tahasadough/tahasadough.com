@@ -3,7 +3,6 @@ package web
 import (
 	"net/http"
 
-	"github.com/tahasadough/tahasadough.com/internal/web/pages"
 	"github.com/tahasadough/tahasadough.com/internal/web/pages/home"
 )
 
@@ -23,11 +22,6 @@ func Home(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	_ = home.Page().Render(r.Context(), w)
-}
-
-func Offline(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	_ = pages.OfflinePage().Render(r.Context(), w)
 }
 
 func Sitemap(w http.ResponseWriter, r *http.Request) {
