@@ -12,8 +12,6 @@ import (
 	"github.com/tahasadough/tahasadough.com/internal/web"
 )
 
-var Version = "1.0.0"
-
 func main() {
 	if err := run(); err != nil {
 		log.Fatal(err)
@@ -41,7 +39,7 @@ func run() error {
 	defer stop()
 
 	go func() {
-		log.Printf("tahasadough %s — listening on :%s", Version, port)
+		log.Printf("tahasadough — listening on :%s", port)
 		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 			log.Fatalf("server error: %v", err)
 		}

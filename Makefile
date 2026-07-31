@@ -2,8 +2,7 @@ APP_NAME     = tahasadough
 BUILD_DIR    = bin/
 ENTRY_POINT  = ./cmd/$(APP_NAME)/
 BINARY       = $(BUILD_DIR)$(APP_NAME)
-VERSION      = $(shell git describe --tags --always --dirty 2>/dev/null || echo "dev")
-LDFLAGS      = -ldflags="-X main.Version=$(VERSION)"
+LDFLAGS      = -ldflags="-s -w"
 
 UNAME_S       = $(shell uname -s)
 UNAME_M       = $(shell uname -m)
