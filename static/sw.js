@@ -1,11 +1,16 @@
-var CACHE = 'cache-v1';
-var OFFLINE_CACHE = 'offline-v1';
+var CACHE = 'cache-v2';
+var OFFLINE_CACHE = 'offline-v2';
 var OFFLINE_URL = '/offline';
 
 var ASSETS = [
   '/',
   '/style.css',
   '/js/app.js',
+  '/js/theme.js',
+  '/js/navbar.js',
+  '/js/hero.js',
+  '/js/offline.js',
+  '/js/sw.js',
   '/images/taha-sadough.webp',
   '/images/metallic-flower.webp',
   '/images/metallic-shape-background.webp',
@@ -51,49 +56,50 @@ self.addEventListener('fetch', function (event) {
 
   var url = new URL(request.url);
   if (url.protocol !== 'http:' && url.protocol !== 'https:') return;
+  if (url.origin !== location.origin) return;
 
   if (request.headers.get('Accept') && request.headers.get('Accept').indexOf('text/html') !== -1) {
-    event.respondWith(navigationHandler(request));
+    event.respondWith(networkFirst(request));
     return;
   }
 
-  event.respondWith(staticHandler(request));
+  event.respondWith(staleWhileRevalidate(request));
 });
 
-function navigationHandler(request) {
-  return caches.match(request).then(function (cached) {
-    if (cached) return cached;
-    return fetch(request).then(function (response) {
-      if (response.ok) {
-        var cloned = response.clone();
-        caches.open(OFFLINE_CACHE).then(function (cache) {
-          cache.put(request, cloned);
-        });
-      }
-      return response;
-    }).catch(function () {
-      return caches.match(OFFLINE_URL).then(function (fallback) {
-        if (fallback) return fallback;
-        return new Response('Offline', { status: 503 });
+function networkFirst(request) {
+  return fetch(request).then(function (response) {
+    if (response.ok) {
+      var cloned = response.clone();
+      caches.open(OFFLINE_CACHE).then(function (cache) {
+        cache.put(request, cloned);
       });
+    }
+    return response;
+  }).catch(function () {
+    return caches.match(request).then(function (cached) {
+      if (cached) return cached;
+      return caches.match(OFFLINE_URL);
+    }).then(function (fallback) {
+      if (fallback) return fallback;
+      return new Response('Offline', { status: 503, headers: { 'Content-Type': 'text/plain' } });
     });
   });
 }
 
-function staticHandler(request) {
+function staleWhileRevalidate(request) {
   return caches.match(request).then(function (cached) {
-    if (cached) return cached;
-    return fetch(request).then(function (response) {
+    var network = fetch(request).then(function (response) {
       if (response.ok) {
         var cloned = response.clone();
-        caches.open(OFFLINE_CACHE).then(function (cache) {
+        caches.open(CACHE).then(function (cache) {
           cache.put(request, cloned);
         });
       }
       return response;
     }).catch(function () {
-      return new Response(null, { status: 204 });
+      return cached;
     });
+    return cached || network;
   });
 }
 
