@@ -14,7 +14,7 @@ const jsonLDScript = `<script type="application/ld+json">
 }
 </script>`
 
-templ head() {
+templ head(title, desc string) {
 	<head>
 		<script>
 			(function() {
@@ -29,10 +29,11 @@ templ head() {
 		</script>
 		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title>{ title }</title>
+		<meta name="description" content={ desc }/>
 		<meta name="theme-color" content="#000000"/>
 		<link rel="icon" href="/favicon.ico"/>
 		@templ.Raw(static.StyleCSS)
-		<script src="/js/htmx.min.js" defer></script>
 		<meta name="keywords" content="software engineer, software developer, backend developer, system design, distributed systems, Go, Rust, TypeScript, APIs"/>
 		@templ.Raw(jsonLDScript)
 	</head>
@@ -41,11 +42,8 @@ templ head() {
 templ Page(title, desc string, content templ.Component) {
 	<!DOCTYPE html>
 	<html lang="en" class="overflow-x-hidden">
-		@head()
-		<title>{ title }</title>
-		<meta name="description" content={ desc }/>
+		@head(title, desc)
 		<body
-			hx-boost="true"
 			class="overflow-x-hidden bg-surface font-sans text-on-surface antialiased"
 		>
 			@content
