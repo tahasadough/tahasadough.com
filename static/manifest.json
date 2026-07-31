@@ -1,7 +1,7 @@
 {
-	"name": "Taha Sadough — Software Engineer",
+	"name": "Taha Sadough",
 	"short_name": "Taha Sadough",
-	"description": "Software Engineer specializing in scalable, high-performance systems & APIs.",
+	"description": "Scalable, high-performance systems & APIs.",
 	"start_url": "/",
 	"display": "standalone",
 	"display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
