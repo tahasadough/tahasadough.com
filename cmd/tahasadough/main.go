@@ -10,7 +10,6 @@ import (
 	"time"
 
 	"github.com/tahasadough/tahasadough.com/internal/web"
-	"github.com/tahasadough/tahasadough.com/static"
 )
 
 var Version = "1.0.0"
@@ -24,11 +23,8 @@ func main() {
 func run() error {
 	mux := http.NewServeMux()
 
-	mux.HandleFunc("GET /", web.Home)
-	mux.HandleFunc("GET /offline", web.Offline)
-	mux.HandleFunc("GET /sitemap.xml", web.Sitemap)
-
-	registerStaticRoutes(mux)
+	web.Routes(mux)
+	web.StaticRoutes(mux)
 
 	port := os.Getenv("PORT")
 	if port == "" {
@@ -58,21 +54,4 @@ func run() error {
 	defer cancel()
 
 	return srv.Shutdown(shutdownCtx)
-}
-
-func registerStaticRoutes(mux *http.ServeMux) {
-	fs := http.FileServer(http.FS(static.FS))
-	year := 365 * 24 * time.Hour
-
-	mux.Handle("GET /images/", web.Cache(year, true)(fs))
-	mux.Handle("GET /style.css", web.Cache(year, true)(fs))
-	mux.Handle("GET /js/", web.Cache(year, true)(fs))
-	mux.Handle("GET /favicon.ico", web.Cache(year, true)(fs))
-	mux.Handle("GET /apple-touch-icon.png", web.Cache(year, true)(fs))
-	mux.Handle("GET /pwa-192.png", web.Cache(year, true)(fs))
-	mux.Handle("GET /pwa-512.png", web.Cache(year, true)(fs))
-
-	mux.Handle("GET /manifest.json", web.Cache(1*time.Hour, false)(fs))
-	mux.Handle("GET /robots.txt", web.Cache(1*time.Hour, false)(fs))
-	mux.Handle("GET /service_worker.js", fs)
 }
