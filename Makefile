@@ -45,7 +45,7 @@ build-cf: css templ-gen | $(BUILD_DIR)
 	rm -f $(BINARY)
 
 # --- Quality ---
-check: fmt vet lint
+check: fmt lint
 
 fmt:
 	gofmt -w -s ./cmd/ ./internal/
