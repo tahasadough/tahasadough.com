@@ -9,6 +9,8 @@ static/style.css
 *.test.exe
 coverage.out
 
+*_templ.go
+
 .DS_Store
 Thumbs.db
 Desktop.ini
