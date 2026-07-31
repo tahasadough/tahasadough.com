@@ -71,6 +71,11 @@
 	--color-on-surface: #1f1a16;
 }
 
+#theme-icon .icon-sun { display: block; }
+#theme-icon .icon-moon { display: none; }
+.light #theme-icon .icon-sun { display: none; }
+.light #theme-icon .icon-moon { display: block; }
+
 @custom-variant light (&:where(.light, .light *));
 
 @media (prefers-reduced-motion: reduce) {
