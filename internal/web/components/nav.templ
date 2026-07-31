@@ -1,14 +1,12 @@
 package components
 
-type NavLink struct {
-	Href string
-	Name string
-}
-
-var navLinks = []NavLink{
-	{Href: "/#about", Name: "About"},
-	{Href: "/#why-me", Name: "Why Me"},
-	{Href: "/#contact", Name: "Contact"},
+var navLinks = []struct {
+	href string
+	name string
+}{
+	{href: "/#about", name: "About"},
+	{href: "/#why-me", name: "Why Me"},
+	{href: "/#contact", name: "Contact"},
 }
 
 templ Navbar() {
@@ -29,7 +27,7 @@ templ Navbar() {
 			<ul class="flex gap-8">
 				for _, link := range navLinks {
 					<li>
-						<a href={ link.Href } class="transition-link hover:text-gray">{ link.Name }</a>
+						<a href={ link.href } class="transition-link hover:text-gray">{ link.name }</a>
 					</li>
 				}
 			</ul>
@@ -41,10 +39,10 @@ templ Navbar() {
 				aria-label="Switch to light mode"
 				class="cursor-pointer rounded-lg p-1.5 transition-link ease-spring hover:bg-highlight hover:text-gray"
 			>
-			<div id="theme-icon" class="transition-link">
-				@SunIcon()
-				@MoonIcon()
-			</div>
+				<div id="theme-icon" class="transition-link">
+					@SunIcon()
+					@MoonIcon()
+				</div>
 			</button>
 			@Navmenu()
 		</div>
@@ -64,7 +62,7 @@ templ Navmenu() {
 				<ul class="space-y-5 px-5 pt-16 pb-10 text-lg">
 					for _, link := range navLinks {
 						<li>
-							<a href={ link.Href } class="block transition-link hover:text-gray">{ link.Name }</a>
+							<a href={ link.href } class="block transition-link hover:text-gray">{ link.name }</a>
 						</li>
 					}
 				</ul>

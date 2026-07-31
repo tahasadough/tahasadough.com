@@ -2,13 +2,11 @@ package pages
 
 import "github.com/tahasadough/tahasadough.com/internal/web/components"
 
-type WhyMeCard struct {
-	IconSVG func() templ.Component
-	Title   string
-	Desc    string
-}
-
-var whyMeCards = []WhyMeCard{
+var whyMeCards = []struct {
+	iconSVG func() templ.Component
+	title   string
+	desc    string
+}{
 	{components.ClockIcon, "Efficient Workflow", "Streamlined developing process for rapid deliver without compromising quality or detail."},
 	{components.MessageIcon, "Collaborative Process", "I work closely with you, integrating your feedback to create fantastic softwares and amazing experiences"},
 	{components.SearchIcon, "Attention to Detail", "Meticulous attention to everything, ensuring a polished and cohesive final application that impresses."},
@@ -93,11 +91,11 @@ templ whyMeSection() {
 				@components.Card() {
 					<div class="flex size-12 items-center justify-center rounded-lg border border-muted bg-highlight transition-link group-hover:border-gray/50 group-hover:bg-muted">
 						<div class="transition-link group-hover:scale-110 group-hover:text-gray">
-							@card.IconSVG()
+							@card.iconSVG()
 						</div>
 					</div>
-					<h3 class="text-xl transition-link group-hover:text-gray">{ card.Title }</h3>
-					<p class="text-base text-gray">{ card.Desc }</p>
+					<h3 class="text-xl transition-link group-hover:text-gray">{ card.title }</h3>
+					<p class="text-base text-gray">{ card.desc }</p>
 				}
 			}
 		</div>
