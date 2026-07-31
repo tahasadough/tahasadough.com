@@ -1,0 +1,122 @@
+package pages
+
+import "github.com/tahasadough/tahasadough.com/internal/web/components"
+
+type WhyMeCard struct {
+	IconSVG func() templ.Component
+	Title   string
+	Desc    string
+}
+
+var whyMeCards = []WhyMeCard{
+	{components.ClockIcon, "Efficient Workflow", "Streamlined developing process for rapid deliver without compromising quality or detail."},
+	{components.MessageIcon, "Collaborative Process", "I work closely with you, integrating your feedback to create fantastic softwares and amazing experiences"},
+	{components.SearchIcon, "Attention to Detail", "Meticulous attention to everything, ensuring a polished and cohesive final application that impresses."},
+}
+
+templ Home() {
+	@components.MainLayout("Taha Sadough — Software Developer",
+		"Software Engineer specializing in scalable, high-performance backend systems and APIs — Go, Rust, TypeScript, distributed systems, modular monoliths to microservices.",
+		homeContent())
+}
+
+templ homeContent() {
+	@hero()
+	@aboutSection()
+	@whyMeSection()
+	@contactSection()
+}
+
+templ hero() {
+	<section class="container flex flex-col items-center justify-center space-y-11.25 pt-36 pb-10 md:space-y-16 md:pt-30 md:pb-0 lg:space-y-25 lg:pt-35">
+		<div class="flex flex-col items-center justify-center gap-9">
+			@components.Badge("Hello, I'm Taha 👋")
+			<h1 class="text-center text-3xl leading-none sm:text-5xl md:text-6xl">
+				<span class="animate-gradient bg-200 bg-linear-to-r from-on-surface via-gray to-on-surface bg-clip-text text-transparent">
+					Software Developer
+				</span>
+				<br/>
+				<span class="text-gray">Backend &amp; System Design</span>
+			</h1>
+			@components.Button("https://github.com/tahasadough") {
+				Connect me
+			}
+		</div>
+		<div id="hero-flower" class="relative -z-50 select-none">
+			<div id="hero-flower-inner">
+				<img
+					src="/images/metallic-flower.webp"
+					alt=""
+					aria-hidden="true"
+					fetchpriority="high"
+					class="size-90 object-cover transition-all duration-1500 ease-smooth md:size-125"
+					onerror="this.style.display='none'"
+				/>
+			</div>
+		</div>
+	</section>
+}
+
+templ aboutSection() {
+	<section id="about" class="container flex flex-col items-center justify-center pt-30 md:flex-col-reverse lg:flex-row">
+		<div class="rounded-2xl border border-muted bg-elevated p-0 overflow-hidden sm:w-7/10 lg:w-full" style="aspect-ratio: 3/4">
+			<img
+				src="/images/taha-sadough.webp"
+				alt="Taha Sadough"
+				fetchpriority="high"
+				class="size-full object-cover transition-all duration-700 hover:scale-105"
+				onerror="this.style.display='none'"
+			/>
+		</div>
+		<div class="space-y-8 py-10 md:px-10">
+			<div class="flex justify-center">
+				@components.Badge("About")
+			</div>
+			<h2 class="text-center text-2xl text-gray md:text-4xl lg:text-5xl">
+				I build <span class="text-on-surface">scalable systems</span>
+			</h2>
+			<p class="text-center text-base text-gray">
+				I specialize in architecting scalable, high-performance systems, guided by the &apos;right tool for the job&apos; philosophy. I design robust architectures tailored to the specific needs of the product&mdash;ranging from efficient, maintainable Modular Monoliths, to distributed Microservices when extreme scale demands it.
+			</p>
+		</div>
+	</section>
+}
+
+templ whyMeSection() {
+	<section id="why-me" class="container flex flex-col items-center justify-center gap-10 pt-24 pb-20">
+		@components.Badge("Why me?")
+		<h2 class="px-2 text-center text-3xl leading-none lg:px-0 lg:text-5xl">
+			I create epic apps that <span class="text-gray">spark</span> your imagination!
+		</h2>
+		<div class="grid gap-8 md:grid-cols-3">
+			for _, card := range whyMeCards {
+				@components.Card() {
+					<div class="flex size-12 items-center justify-center rounded-lg border border-muted bg-highlight transition-link group-hover:border-gray/50 group-hover:bg-muted">
+						<div class="transition-link group-hover:scale-110 group-hover:text-gray">
+							@card.IconSVG()
+						</div>
+					</div>
+					<h3 class="text-xl transition-link group-hover:text-gray">{ card.Title }</h3>
+					<p class="text-base text-gray">{ card.Desc }</p>
+				}
+			}
+		</div>
+	</section>
+}
+
+templ contactSection() {
+	<section id="contact" class="relative flex flex-col items-center justify-center gap-7 py-32">
+		@components.Badge("Contact")
+		<h2 class="text-center text-3xl lg:text-5xl">
+			<span class="text-gray">Let&apos;s Get </span> in Touch
+		</h2>
+		<p class="text-center text-base text-gray">Let&apos;s start ASAP.</p>
+		@components.Button("https://github.com/tahasadough") {
+			Connect me
+		}
+		<div class="absolute inset-0 -z-10 h-full bg-surface opacity-90"></div>
+		<div class="animate-blob absolute -top-20 left-0 h-2/5 w-full bg-linear-to-br from-elevated to-surface blur-3xl"></div>
+		<div class="animate-blob absolute top-98 bottom-0 left-0 h-1/3 w-full bg-linear-to-br from-elevated to-surface blur-3xl" style="animation-delay: -5s; animation-duration: 12s;"></div>
+		<img src="/images/metallic-shape-background.webp" alt="" aria-hidden="true" loading="lazy" class="absolute inset-0 -z-20 size-full object-cover select-none"/>
+	</section>
+}
