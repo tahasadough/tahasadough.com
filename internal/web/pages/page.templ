@@ -1,5 +1,17 @@
 package pages
 
+const jsonLDScript = `<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Taha Sadough",
+  "jobTitle": "Software Developer",
+  "description": "Software Engineer specializing in scalable, high-performance backend systems and APIs.",
+  "techStack": ["Go", "Rust", "TypeScript"],
+  "sameAs": ["https://github.com/tahasadough"]
+}
+</script>`
+
 templ head() {
 	<head>
 		<script>
@@ -24,6 +36,8 @@ templ head() {
 		<link rel="icon" href="/favicon.ico"/>
 		<link rel="stylesheet" href="/style.css"/>
 		<script src="/js/htmx.min.js" defer></script>
+		<meta name="keywords" content="software engineer, software developer, backend developer, systems design, distributed systems, Go, Rust, TypeScript, APIs"/>
+		@templ.Raw(jsonLDScript)
 	</head>
 }
 
