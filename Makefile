@@ -65,6 +65,7 @@ build-cf: css templ-gen | $(BUILD_DIR)
 	curl -s http://localhost:8080/sitemap.xml > _site/sitemap.xml; \
 	curl -s http://localhost:8080/ > _site/index.html; \
 	cp -r static/* _site/; \
+	rm -f _site/style.css; \
 	rm -f _site/embed.go; \
 	kill $$pid 2>/dev/null; \
 	rm -f $(BINARY)

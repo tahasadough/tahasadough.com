@@ -26,7 +26,6 @@ func StaticRoutes(mux *http.ServeMux) {
 
 	staticMux := http.NewServeMux()
 	staticMux.Handle("GET /images/", CacheControl(cacheImmutable)(fs))
-	staticMux.Handle("GET /style.css", revalidate(etag(fs)))
 	staticMux.Handle("GET /js/", revalidate(etag(fs)))
 	staticMux.Handle("GET /favicon.ico", CacheControl(cacheImmutable)(fs))
 	staticMux.Handle("GET /robots.txt", revalidate(etag(fs)))
