@@ -1,8 +1,6 @@
 package home
 
-import (
-	"github.com/tahasadough/tahasadough.com/internal/web/components/ui"
-)
+import "github.com/tahasadough/tahasadough.com/internal/web/components"
 
 templ aboutSection() {
 	<section id="about" class="container flex flex-col items-center justify-center pt-30 md:flex-col-reverse lg:flex-row">
@@ -17,7 +15,7 @@ templ aboutSection() {
 		</div>
 		<div class="space-y-8 py-10 md:px-10">
 			<div class="flex justify-center">
-				@ui.Badge("About")
+				@components.Badge("About")
 			</div>
 			<h2 class="text-center text-2xl text-gray md:text-4xl lg:text-5xl">
 				I build <span class="text-on-surface">scalable systems</span>

@@ -1,15 +1,15 @@
 package home
 
-import "github.com/tahasadough/tahasadough.com/internal/web/components/ui"
+import "github.com/tahasadough/tahasadough.com/internal/web/components"
 
 templ contactSection() {
 	<section id="contact" class="relative flex flex-col items-center justify-center gap-7 py-32">
-		@ui.Badge("Contact")
+		@components.Badge("Contact")
 		<h2 class="text-center text-3xl lg:text-5xl">
 			<span class="text-gray">Let&apos;s Get </span> in Touch
 		</h2>
 		<p class="text-center text-base text-gray">Let&apos;s start ASAP.</p>
-		@ui.Button("https://github.com/tahasadough") {
+		@components.Button("https://github.com/tahasadough") {
 			Connect me
 		}
 		<div class="absolute inset-0 -z-10 h-full bg-surface opacity-90"></div>
