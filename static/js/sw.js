@@ -3,7 +3,7 @@ const showUpdate = () => { if (notif) notif.style.display = ""; };
 
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
-    .register("/service_worker.js")
+    .register("/sw.js")
     .then((reg) => {
       if (reg.waiting) showUpdate();
 

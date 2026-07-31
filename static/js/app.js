@@ -6,4 +6,4 @@ import "./theme.js";
 import "./navbar.js";
 import "./hero.js";
 import "./offline.js";
-import "./service_worker.js";
+import "./sw.js";
