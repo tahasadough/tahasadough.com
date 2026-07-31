@@ -1,5 +1,7 @@
 package pages
 
+import "github.com/tahasadough/tahasadough.com/static"
+
 const jsonLDScript = `<script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -12,7 +14,7 @@ const jsonLDScript = `<script type="application/ld+json">
 }
 </script>`
 
-templ head() {
+templ head(title, desc string) {
 	<head>
 		<script>
 			(function() {
@@ -27,15 +29,11 @@ templ head() {
 		</script>
 		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<link rel="manifest" href="/manifest.json"/>
+		<title>{ title }</title>
+		<meta name="description" content={ desc }/>
 		<meta name="theme-color" content="#000000"/>
-		<meta name="mobile-web-app-capable" content="yes"/>
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-		<meta name="apple-mobile-web-app-title" content="Taha Sadough"/>
-		<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
 		<link rel="icon" href="/favicon.ico"/>
-		<link rel="stylesheet" href="/style.css"/>
-		<script src="/js/htmx.min.js" defer></script>
+		@templ.Raw(static.StyleCSS)
 		<meta name="keywords" content="software engineer, software developer, backend developer, system design, distributed systems, Go, Rust, TypeScript, APIs"/>
 		@templ.Raw(jsonLDScript)
 	</head>
@@ -44,11 +42,8 @@ templ head() {
 templ Page(title, desc string, content templ.Component) {
 	<!DOCTYPE html>
 	<html lang="en" class="overflow-x-hidden">
-		@head()
-		<title>{ title }</title>
-		<meta name="description" content={ desc }/>
+		@head(title, desc)
 		<body
-			hx-boost="true"
 			class="overflow-x-hidden bg-surface font-sans text-on-surface antialiased"
 		>
 			@content

@@ -58,14 +58,14 @@ templ-gen:
 build-cf: css templ-gen | $(BUILD_DIR)
 	go build $(LDFLAGS) -o $(BINARY) $(ENTRY_POINT)
 	rm -rf _site
+	mkdir -p _site
 	./$(BINARY) & \
 	pid=$$!; \
 	sleep 2; \
-	mkdir -p _site/offline; \
 	curl -s http://localhost:8080/sitemap.xml > _site/sitemap.xml; \
-	curl -s http://localhost:8080/offline > _site/offline/index.html; \
 	curl -s http://localhost:8080/ > _site/index.html; \
 	cp -r static/* _site/; \
+	rm -f _site/style.css; \
 	rm -f _site/embed.go; \
 	kill $$pid 2>/dev/null; \
 	rm -f $(BINARY)

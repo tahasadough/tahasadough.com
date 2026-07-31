@@ -64,8 +64,3 @@ entrance();
 window.addEventListener("scroll", updateTarget);
 updateTarget();
 
-document.addEventListener("htmx:afterSettle", () => {
-  initialTop = 0;
-  entrance();
-  updateTarget();
-});
