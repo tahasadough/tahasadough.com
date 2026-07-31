@@ -13,9 +13,10 @@ else
   TW_ASSET    = $(if $(filter aarch64,$(UNAME_M)),linux-arm64,linux-x64)
 endif
 TAILWIND_VERSION = v4.3.3
+TAILWIND_STAMP   = $(BUILD_DIR).tailwindcss-version
 TAILWIND         = $(BUILD_DIR)tailwindcss
 
-.PHONY: all build run dev css templ-gen clean build-cf check fmt lint test tidy vet
+.PHONY: all build run dev css templ-gen clean build-cf check fmt lint test tidy vet FORCE
 
 all: check build
 
@@ -34,9 +35,17 @@ dev: $(TAILWIND)
 	go run github.com/a-h/templ/cmd/templ@v0.3.1020 generate --watch &
 	go run $(ENTRY_POINT)
 
-$(TAILWIND): | $(BUILD_DIR)
-	curl -fsSL https://github.com/tailwindlabs/tailwindcss/releases/download/$(TAILWIND_VERSION)/tailwindcss-$(TW_ASSET) -o $@
+FORCE:
+
+$(TAILWIND): $(TAILWIND_STAMP) | $(BUILD_DIR)
+	curl -fsSL https://github.com/tailwindlabs/tailwindcss/releases/download/$(TAILWIND_VERSION)/tailwindcss-$(TW_ASSET) -o $@.tmp
+	mv $@.tmp $@
 	chmod +x $@
+
+$(TAILWIND_STAMP): FORCE | $(BUILD_DIR)
+	@if [ "$$(cat $@ 2>/dev/null)" != "$(TAILWIND_VERSION)" ]; then \
+		printf '%s\n' "$(TAILWIND_VERSION)" > $@; \
+	fi
 
 css: $(TAILWIND)
 	./$(TAILWIND) -i ./style.css -o ./static/style.css --minify
