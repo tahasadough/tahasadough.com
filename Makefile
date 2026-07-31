@@ -12,9 +12,10 @@ ifeq ($(UNAME_S),Darwin)
 else
   TW_ASSET    = $(if $(filter aarch64,$(UNAME_M)),linux-arm64,linux-x64)
 endif
-TAILWIND_VERSION = v4.3.3
-TAILWIND_STAMP   = $(BUILD_DIR).tailwindcss-version
-TAILWIND         = $(BUILD_DIR)tailwindcss
+TAILWIND_STAMP = $(BUILD_DIR).tailwindcss-version
+TAILWIND       = $(BUILD_DIR)tailwindcss
+TW_RELEASES    = https://api.github.com/repos/tailwindlabs/tailwindcss/releases/latest
+TW_URL         = https://github.com/tailwindlabs/tailwindcss/releases/latest/download/tailwindcss-$(TW_ASSET)
 
 .PHONY: all build run dev css templ-gen clean build-cf check fmt lint test tidy vet FORCE
 
@@ -38,13 +39,14 @@ dev: $(TAILWIND)
 FORCE:
 
 $(TAILWIND): $(TAILWIND_STAMP) | $(BUILD_DIR)
-	curl -fsSL https://github.com/tailwindlabs/tailwindcss/releases/download/$(TAILWIND_VERSION)/tailwindcss-$(TW_ASSET) -o $@.tmp
+	curl -fsSL $(TW_URL) -o $@.tmp
 	mv $@.tmp $@
 	chmod +x $@
 
 $(TAILWIND_STAMP): FORCE | $(BUILD_DIR)
-	@if [ "$$(cat $@ 2>/dev/null)" != "$(TAILWIND_VERSION)" ]; then \
-		printf '%s\n' "$(TAILWIND_VERSION)" > $@; \
+	@latest=$$(curl -fsSL $(TW_RELEASES) 2>/dev/null | grep -m1 '"tag_name"' | sed 's/.*"tag_name" *: *"\([^"]*\)".*/\1/'); \
+	if [ -n "$$latest" ] && [ "$$(cat $@ 2>/dev/null)" != "$$latest" ]; then \
+		printf '%s\n' "$$latest" > $@; \
 	fi
 
 css: $(TAILWIND)
