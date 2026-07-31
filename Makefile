@@ -21,16 +21,16 @@ run: build
 
 dev:
 	npx @tailwindcss/cli -i ./style.css -o ./static/style.css --watch &
-	templ generate --watch &
+	go run github.com/a-h/templ/cmd/templ@v0.3.1020 generate --watch &
 	go run $(ENTRY_POINT)
 
 css:
 	npx @tailwindcss/cli -i ./style.css -o ./static/style.css --minify
 
 templ-gen:
-	templ generate
+	go run github.com/a-h/templ/cmd/templ@v0.3.1020 generate
 
-build-cf: css | $(BUILD_DIR)
+build-cf: css templ-gen | $(BUILD_DIR)
 	go build $(LDFLAGS) -o $(BINARY) $(ENTRY_POINT)
 	rm -rf _site
 	./$(BINARY) & \
