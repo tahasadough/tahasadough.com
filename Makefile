@@ -5,6 +5,16 @@ BINARY       = $(BUILD_DIR)$(APP_NAME)
 VERSION      = $(shell git describe --tags --always --dirty 2>/dev/null || echo "dev")
 LDFLAGS      = -ldflags="-X main.Version=$(VERSION)"
 
+UNAME_S       = $(shell uname -s)
+UNAME_M       = $(shell uname -m)
+ifeq ($(UNAME_S),Darwin)
+  TW_ASSET    = $(if $(filter arm64,$(UNAME_M)),macos-arm64,macos-x64)
+else
+  TW_ASSET    = $(if $(filter aarch64,$(UNAME_M)),linux-arm64,linux-x64)
+endif
+TAILWIND_VERSION = v4.3.3
+TAILWIND         = $(BUILD_DIR)tailwindcss
+
 .PHONY: all build run dev css templ-gen clean build-cf check fmt lint test tidy vet
 
 all: check build
@@ -19,13 +29,17 @@ build: css templ-gen | $(BUILD_DIR)
 run: build
 	./$(BINARY)
 
-dev:
-	npx @tailwindcss/cli -i ./style.css -o ./static/style.css --watch &
+dev: $(TAILWIND)
+	./$(TAILWIND) -i ./style.css -o ./static/style.css --watch &
 	go run github.com/a-h/templ/cmd/templ@v0.3.1020 generate --watch &
 	go run $(ENTRY_POINT)
 
-css:
-	npx @tailwindcss/cli -i ./style.css -o ./static/style.css --minify
+$(TAILWIND): | $(BUILD_DIR)
+	curl -fsSL https://github.com/tailwindlabs/tailwindcss/releases/download/$(TAILWIND_VERSION)/tailwindcss-$(TW_ASSET) -o $@
+	chmod +x $@
+
+css: $(TAILWIND)
+	./$(TAILWIND) -i ./style.css -o ./static/style.css --minify
 
 templ-gen:
 	go run github.com/a-h/templ/cmd/templ@v0.3.1020 generate
@@ -41,6 +55,7 @@ build-cf: css templ-gen | $(BUILD_DIR)
 	curl -s http://localhost:8080/offline > _site/offline/index.html; \
 	curl -s http://localhost:8080/ > _site/index.html; \
 	cp -r static/* _site/; \
+	rm -f _site/embed.go; \
 	kill $$pid 2>/dev/null; \
 	rm -f $(BINARY)
 
