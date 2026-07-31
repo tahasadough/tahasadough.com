@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"github.com/tahasadough/tahasadough.com/internal/web"
+	"github.com/tahasadough/tahasadough.com/static"
 )
 
 var Version = "1.0.0"
@@ -60,7 +61,7 @@ func run() error {
 }
 
 func registerStaticRoutes(mux *http.ServeMux) {
-	fs := http.FileServer(http.Dir("static"))
+	fs := http.FileServer(http.FS(static.FS))
 	year := 365 * 24 * time.Hour
 
 	mux.Handle("GET /images/", web.Cache(year, true)(fs))
