@@ -1,4 +1,4 @@
-package pages
+package components
 
 import "github.com/tahasadough/tahasadough.com/static"
 
@@ -15,6 +15,28 @@ const jsonLDScript = `<script type="application/ld+json">
   "sameAs": ["https://github.com/tahasadough"]
 }
 </script>`
+
+templ MainLayout(title, desc string, content templ.Component) {
+	<!DOCTYPE html>
+	<html lang="en" class="overflow-x-hidden">
+		@head(title, desc)
+		<body
+			class="overflow-x-hidden bg-surface font-sans text-on-surface antialiased"
+		>
+			<a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:rounded-lg focus:bg-elevated focus:px-4 focus:py-2 focus:text-on-surface focus:ring-2 focus:ring-on-surface">
+				Skip to content
+			</a>
+			<header class="lg:container">
+				@Navbar()
+			</header>
+			<main id="main-content" aria-label="Main content">
+				@content
+			</main>
+			@Footer()
+			<script type="module" src="/js/app.js"></script>
+		</body>
+	</html>
+}
 
 templ head(title, desc string) {
 	<head>
@@ -52,17 +74,4 @@ templ head(title, desc string) {
 		<meta name="keywords" content="software engineer, software developer, backend developer, system design, distributed systems, Go, Rust, TypeScript, APIs"/>
 		@templ.Raw(jsonLDScript)
 	</head>
-}
-
-templ Page(title, desc string, content templ.Component) {
-	<!DOCTYPE html>
-	<html lang="en" class="overflow-x-hidden">
-		@head(title, desc)
-		<body
-			class="overflow-x-hidden bg-surface font-sans text-on-surface antialiased"
-		>
-			@content
-			<script type="module" src="/js/app.js"></script>
-		</body>
-	</html>
 }
