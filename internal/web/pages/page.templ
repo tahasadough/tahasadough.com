@@ -2,6 +2,8 @@ package pages
 
 import "github.com/tahasadough/tahasadough.com/static"
 
+const siteURL = "https://tahasadough.com"
+
 const jsonLDScript = `<script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -33,6 +35,19 @@ templ head(title, desc string) {
 		<meta name="description" content={ desc }/>
 		<meta name="theme-color" id="theme-color" content="#000000"/>
 		<link rel="icon" href="/favicon.ico"/>
+		<link rel="canonical" href={ siteURL }/>
+		<meta property="og:type" content="website"/>
+		<meta property="og:url" content={ siteURL }/>
+		<meta property="og:title" content={ title }/>
+		<meta property="og:description" content={ desc }/>
+		<meta property="og:image" content={ siteURL + "/images/taha-sadough.webp" }/>
+		<meta property="og:image:width" content="570"/>
+		<meta property="og:image:height" content="760"/>
+		<meta property="og:site_name" content="Taha Sadough"/>
+		<meta name="twitter:card" content="summary_large_image"/>
+		<meta name="twitter:title" content={ title }/>
+		<meta name="twitter:description" content={ desc }/>
+		<meta name="twitter:image" content={ siteURL + "/images/taha-sadough.webp" }/>
 		@templ.Raw(static.StyleCSS)
 		<meta name="keywords" content="software engineer, software developer, backend developer, system design, distributed systems, Go, Rust, TypeScript, APIs"/>
 		@templ.Raw(jsonLDScript)
