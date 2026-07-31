@@ -9,17 +9,13 @@ import (
 const sitemapXML = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
-		<loc>https://www.tahasadough.com</loc>
+		<loc>https://tahasadough.com</loc>
 		<changefreq>monthly</changefreq>
 		<priority>1.0</priority>
 	</url>
 </urlset>`
 
 func Home(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/" {
-		http.NotFound(w, r)
-		return
-	}
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	_ = home.Page().Render(r.Context(), w)
 }
