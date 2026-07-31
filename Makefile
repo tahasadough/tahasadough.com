@@ -71,7 +71,7 @@ build-cf: css templ-gen | $(BUILD_DIR)
 	rm -f $(BINARY)
 
 # --- Quality ---
-check: fmt lint
+check: templ-gen fmt lint
 
 fmt:
 	gofmt -w -s ./cmd/ ./internal/
