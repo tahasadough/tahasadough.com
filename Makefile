@@ -32,7 +32,7 @@ run: build
 
 dev: $(TAILWIND)
 	./$(TAILWIND) -i ./style.css -o ./static/style.css --watch &
-	go run github.com/a-h/templ/cmd/templ@v0.3.1020 generate --watch &
+	@templ generate --watch 2>/dev/null || go run github.com/a-h/templ/cmd/templ@v0.3.1020 generate --watch &
 	go run $(ENTRY_POINT)
 
 FORCE:
@@ -52,7 +52,7 @@ css: $(TAILWIND)
 	./$(TAILWIND) -i ./style.css -o ./static/style.css --minify
 
 templ-gen:
-	go run github.com/a-h/templ/cmd/templ@v0.3.1020 generate
+	@templ generate 2>/dev/null || go run github.com/a-h/templ/cmd/templ@v0.3.1020 generate
 
 build-cf: css templ-gen | $(BUILD_DIR)
 	go build $(LDFLAGS) -o $(BINARY) $(ENTRY_POINT)
