@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/tahasadough/tahasadough.com/internal/web/pages"
+	home "github.com/tahasadough/tahasadough.com/internal/web/pages/home"
 )
 
 const sitemapXML = `<?xml version="1.0" encoding="UTF-8"?>
@@ -21,7 +22,7 @@ func Home(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	_ = pages.HomePage().Render(r.Context(), w)
+	_ = home.Page().Render(r.Context(), w)
 }
 
 func Offline(w http.ResponseWriter, r *http.Request) {

@@ -1,7 +1,8 @@
-package pages
+package home
 
 import (
 	"github.com/tahasadough/tahasadough.com/internal/web/components/layout"
+	"github.com/tahasadough/tahasadough.com/internal/web/pages"
 )
 
 templ homeContent() {
@@ -25,6 +26,8 @@ templ homeContent() {
 	</div>
 }
 
-templ HomePage() {
-	@page("Taha Sadough", "Scalable, high-performance systems & APIs", homeContent())
+templ Page() {
+	@pages.Page("Taha Sadough — Software Developer | Backend & Systems Design",
+		"Software Engineer specializing in scalable, high-performance backend systems and APIs — Go, Rust, TypeScript, distributed systems, modular monoliths to microservices.",
+		homeContent())
 }
