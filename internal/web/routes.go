@@ -13,7 +13,7 @@ func Routes(mux *http.ServeMux) {
 
 func StaticRoutes(mux *http.ServeMux) {
 	fs := http.FileServer(http.FS(static.FS))
-	mux.Handle("/", cache(fs, "public, max-age=86400"))
+	mux.Handle("/", cache(fs, "public, max-age=31536000, immutable"))
 }
 
 func cache(h http.Handler, value string) http.Handler {
