@@ -2,9 +2,12 @@ package web
 
 import (
 	"bytes"
+	"errors"
 	"fmt"
 	"log"
+	"net"
 	"net/http"
+	"syscall"
 
 	"github.com/tahasadough/tahasadough.com/internal/web/pages"
 )
@@ -25,8 +28,17 @@ type Handler func(http.ResponseWriter, *http.Request) error
 func (h Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if err := h(w, r); err != nil {
 		log.Printf("web: %s %s: %v", r.Method, r.URL.Path, err)
+		if isClientGone(err) {
+			return
+		}
 		writeError(w, r, http.StatusInternalServerError)
 	}
+}
+
+func isClientGone(err error) bool {
+	return errors.Is(err, syscall.EPIPE) ||
+		errors.Is(err, syscall.ECONNRESET) ||
+		errors.Is(err, net.ErrClosed)
 }
 
 func Home(w http.ResponseWriter, r *http.Request) error {
