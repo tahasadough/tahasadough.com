@@ -31,21 +31,6 @@ window.addEventListener("scroll", () => {
   });
 });
 
-const onHome = () => window.location.pathname === "/";
-
-document.addEventListener("click", (e) => {
-  if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
-  const link = e.target.closest('a[href="/"], a[href^="/#"]');
-  if (!link || !onHome()) return;
-  e.preventDefault();
-  const target = link.hash ? document.querySelector(link.hash) : null;
-  if (target) {
-    target.scrollIntoView({ behavior: "smooth" });
-  } else {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-});
-
 const STIFFNESS = 0.03;
 const DAMPING = 0.6;
 
