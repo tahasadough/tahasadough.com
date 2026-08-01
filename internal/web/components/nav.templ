@@ -37,9 +37,9 @@ templ Navbar() {
 				id="theme-toggle"
 				onclick="toggleTheme()"
 				aria-label="Switch to light mode"
-				class="cursor-pointer rounded-lg p-1.5 transition-link ease-spring hover:bg-highlight hover:text-gray"
+				class="cursor-pointer rounded-lg p-1.5 transition-link ease-spring hover:bg-highlight hover:text-gray active:scale-90"
 			>
-				<div id="theme-icon" class="transition-link">
+				<div id="theme-icon" class="transition-link active:rotate-180">
 					@SunIcon()
 					@MoonIcon()
 				</div>
