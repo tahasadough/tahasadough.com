@@ -7,8 +7,8 @@ import (
 )
 
 func Routes(mux *http.ServeMux) {
-	mux.Handle("GET /{$}", http.HandlerFunc(Home))
-	mux.Handle("GET /sitemap.xml", http.HandlerFunc(Sitemap))
+	mux.Handle("GET /{$}", Handler(Home))
+	mux.Handle("GET /sitemap.xml", Handler(Sitemap))
 }
 
 func StaticRoutes(mux *http.ServeMux) {

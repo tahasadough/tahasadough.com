@@ -2,9 +2,9 @@ package web
 
 import (
 	"bytes"
-	"compress/gzip"
+	"fmt"
+	"log"
 	"net/http"
-	"strings"
 
 	"github.com/tahasadough/tahasadough.com/internal/web/pages"
 )
@@ -20,26 +20,25 @@ const sitemapXML = `<?xml version="1.0" encoding="UTF-8"?>
 
 const htmlCache = "public, max-age=3600"
 
-func Home(w http.ResponseWriter, r *http.Request) {
-	var buf bytes.Buffer
-	_ = pages.Home().Render(r.Context(), &buf)
-	writeResponse(w, r, "text/html; charset=utf-8", buf.Bytes())
-}
+type Handler func(http.ResponseWriter, *http.Request) error
 
-func Sitemap(w http.ResponseWriter, r *http.Request) {
-	writeResponse(w, r, "application/xml; charset=utf-8", []byte(sitemapXML))
-}
-
-func writeResponse(w http.ResponseWriter, r *http.Request, contentType string, body []byte) {
-	w.Header().Set("Content-Type", contentType)
-	w.Header().Set("Cache-Control", htmlCache)
-	w.Header().Add("Vary", "Accept-Encoding")
-	if strings.Contains(r.Header.Get("Accept-Encoding"), "gzip") {
-		w.Header().Set("Content-Encoding", "gzip")
-		gz := gzip.NewWriter(w)
-		_, _ = gz.Write(body)
-		_ = gz.Close()
-		return
+func (h Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	if err := h(w, r); err != nil {
+		log.Printf("web: %s %s: %v", r.Method, r.URL.Path, err)
+		writeError(w, r, http.StatusInternalServerError)
 	}
-	_, _ = w.Write(body)
+}
+
+func Home(w http.ResponseWriter, r *http.Request) error {
+	var buf bytes.Buffer
+	if err := pages.Home().Render(r.Context(), &buf); err != nil {
+		return fmt.Errorf("render home page: %w", err)
+	}
+	w.Header().Set("Cache-Control", htmlCache)
+	return writeResponse(w, r, "text/html; charset=utf-8", buf.Bytes())
+}
+
+func Sitemap(w http.ResponseWriter, r *http.Request) error {
+	w.Header().Set("Cache-Control", htmlCache)
+	return writeResponse(w, r, "application/xml; charset=utf-8", []byte(sitemapXML))
 }

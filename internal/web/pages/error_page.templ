@@ -1,0 +1,27 @@
+package pages
+
+import (
+	"fmt"
+	"net/http"
+
+	"github.com/tahasadough/tahasadough.com/internal/web/components"
+)
+
+templ ErrorPage(status int) {
+	@components.MainLayout(
+		fmt.Sprintf("%d — Taha Sadough", status),
+		http.StatusText(status),
+		errorContent(status),
+	)
+}
+
+templ errorContent(status int) {
+	<section class="container flex min-h-dvh flex-col items-center justify-center gap-3 pt-24 pb-16 text-center">
+		<p class="text-7xl font-bold text-gray">{ fmt.Sprintf("%d", status) }</p>
+		<h1 class="text-2xl text-on-surface md:text-3xl">{ http.StatusText(status) }</h1>
+		<p class="max-w-md text-base text-gray">Sorry, an unexpected error occurred.</p>
+		<a href="/" class="mt-6 cursor-pointer rounded-3xl border border-gray px-8 py-2.5 font-bold transition-link hover:scale-105 hover:bg-white hover:text-elevated hover:shadow-lg light:hover:bg-black light:hover:text-white light:hover:shadow-black/20">
+			Back to home
+		</a>
+	</section>
+}
