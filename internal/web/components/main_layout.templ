@@ -43,6 +43,10 @@ templ MainLayout(title, desc string, content templ.Component) {
 					const btn = document.getElementById('theme-toggle');
 					btn?.setAttribute('aria-label', light ? 'Switch to dark mode' : 'Switch to light mode');
 					btn?.setAttribute('aria-pressed', String(light));
+
+					const icon = document.getElementById('theme-icon');
+					icon?.classList.add('scale-110', 'rotate-180');
+					setTimeout(() => icon?.classList.remove('scale-110', 'rotate-180'), 300);
 				};
 
 				const themeBtn = document.getElementById('theme-toggle');
