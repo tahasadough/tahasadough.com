@@ -79,6 +79,17 @@
 	will-change: transform;
 }
 
+@keyframes flower-entrance {
+	from {
+		transform: translateY(30px) rotate(-30deg) scale(0.75);
+		opacity: 0.2;
+	}
+}
+
+#hero-flower img {
+	animation: flower-entrance 1500ms var(--ease-smooth) both;
+}
+
 .light {
 	--shadow-navbar: 0 10px 15px -3px rgb(0 0 0 / 0.035), 0 4px 6px -4px rgb(0 0 0 / 0.035);
 	--color-elevated: #f2ebe3;
