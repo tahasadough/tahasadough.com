@@ -21,16 +21,6 @@ window.toggleTheme = () => {
   setTimeout(() => icon.classList.remove("scale-110", "rotate-180"), 300);
 };
 
-let ticking = false;
-window.addEventListener("scroll", () => {
-  if (ticking) return;
-  ticking = true;
-  requestAnimationFrame(() => {
-    document.getElementById("navbar")?.classList.toggle("scrolled", window.scrollY > 50);
-    ticking = false;
-  });
-});
-
 const STIFFNESS = 0.03;
 const DAMPING = 0.6;
 
