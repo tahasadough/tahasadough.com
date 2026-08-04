@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/tahasadough/tahasadough.com/internal/web/pages"
+	"github.com/tahadx/tahasadough.com/internal/web/pages"
 )
 
 func writeResponse(w http.ResponseWriter, r *http.Request, contentType string, body []byte) error {

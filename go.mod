@@ -1,4 +1,4 @@
-module github.com/tahasadough/tahasadough.com
+module github.com/tahadx/tahasadough.com
 
 go 1.26.5
 

@@ -9,7 +9,7 @@ import (
 	"net/http"
 	"syscall"
 
-	"github.com/tahasadough/tahasadough.com/internal/web/pages"
+	"github.com/tahadx/tahasadough.com/internal/web/pages"
 )
 
 const sitemapXML = `<?xml version="1.0" encoding="UTF-8"?>

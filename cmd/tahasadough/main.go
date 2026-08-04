@@ -9,7 +9,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/tahasadough/tahasadough.com/internal/web"
+	"github.com/tahadx/tahasadough.com/internal/web"
 )
 
 func main() {

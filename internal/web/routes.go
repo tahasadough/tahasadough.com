@@ -3,7 +3,7 @@ package web
 import (
 	"net/http"
 
-	"github.com/tahasadough/tahasadough.com/static"
+	"github.com/tahadx/tahasadough.com/static"
 )
 
 func Routes(mux *http.ServeMux) {
